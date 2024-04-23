@@ -1,6 +1,6 @@
 ﻿namespace Triathlon
 {
-    partial class Form1
+    partial class FormInscription
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
