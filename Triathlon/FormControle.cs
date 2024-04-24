@@ -16,5 +16,10 @@ namespace Triathlon
         {
             InitializeComponent();
         }
+
+        private void FormControle_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
