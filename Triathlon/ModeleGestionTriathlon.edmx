@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="triathlonDB_EntityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AGE">
+          <Key>
+            <PropertyRef Name="codeAge" />
+          </Key>
+          <Property Name="codeAge" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="AgeDebut" Type="smallint" Nullable="false" />
+          <Property Name="AgeFin" Type="smallint" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="INSCRIPTION">
+          <Key>
+            <PropertyRef Name="numTriathlon" />
+            <PropertyRef Name="numDossard" />
+          </Key>
+          <Property Name="numTriathlon" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="numDossard" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateInscription" Type="date" />
+          <Property Name="tempsCourseCyscliste" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="tempsCourse" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="tempsNatation" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="numeroTriathlete" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUIT">
+          <Key>
+            <PropertyRef Name="codeProduit" />
+          </Key>
+          <Property Name="codeProduit" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="libelle" Type="nvarchar" MaxLength="50" />
+          <Property Name="tauxMax" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRIATHLETE">
+          <Key>
+            <PropertyRef Name="numeroTriathlete" />
+          </Key>
+          <Property Name="numeroTriathlete" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateNaissance" Type="date" Nullable="false" />
+          <Property Name="pays" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ville" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="numLicence" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="dateObtention" Type="date" />
+          <Property Name="codePostal" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="codeAge" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRIATHLON">
+          <Key>
+            <PropertyRef Name="numTriathlon" />
+          </Key>
+          <Property Name="numTriathlon" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="lieu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateTriathlon" Type="date" />
+          <Property Name="codeType" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TYPE_TRIATHLON">
+          <Key>
+            <PropertyRef Name="codeType" />
+          </Key>
+          <Property Name="codeType" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="designation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="distanceNatation" Type="int" Nullable="false" />
+          <Property Name="distanceCyclisme" Type="int" Nullable="false" />
+          <Property Name="distanceCourse" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VERIFIER">
+          <Key>
+            <PropertyRef Name="codeProduit" />
+            <PropertyRef Name="numTriathlon" />
+            <PropertyRef Name="numDossard" />
+          </Key>
+          <Property Name="codeProduit" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="numTriathlon" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="numDossard" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prelevement" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__INSCRIPTI__numer__34C8D9D1">
+          <End Role="TRIATHLETE" Type="Self.TRIATHLETE" Multiplicity="1" />
+          <End Role="INSCRIPTION" Type="Self.INSCRIPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRIATHLETE">
+              <PropertyRef Name="numeroTriathlete" />
+            </Principal>
+            <Dependent Role="INSCRIPTION">
+              <PropertyRef Name="numeroTriathlete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INSCRIPTI__numTr__33D4B598">
+          <End Role="TRIATHLON" Type="Self.TRIATHLON" Multiplicity="1" />
+          <End Role="INSCRIPTION" Type="Self.INSCRIPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRIATHLON">
+              <PropertyRef Name="numTriathlon" />
+            </Principal>
+            <Dependent Role="INSCRIPTION">
+              <PropertyRef Name="numTriathlon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TRIATHLET__codeA__2D27B809">
+          <End Role="AGE" Type="Self.AGE" Multiplicity="1" />
+          <End Role="TRIATHLETE" Type="Self.TRIATHLETE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGE">
+              <PropertyRef Name="codeAge" />
+            </Principal>
+            <Dependent Role="TRIATHLETE">
+              <PropertyRef Name="codeAge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TRIATHLON__codeT__300424B4">
+          <End Role="TYPE_TRIATHLON" Type="Self.TYPE_TRIATHLON" Multiplicity="1" />
+          <End Role="TRIATHLON" Type="Self.TRIATHLON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_TRIATHLON">
+              <PropertyRef Name="codeType" />
+            </Principal>
+            <Dependent Role="TRIATHLON">
+              <PropertyRef Name="codeType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VERIFIER__38996AB5">
+          <End Role="INSCRIPTION" Type="Self.INSCRIPTION" Multiplicity="1" />
+          <End Role="VERIFIER" Type="Self.VERIFIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSCRIPTION">
+              <PropertyRef Name="numTriathlon" />
+              <PropertyRef Name="numDossard" />
+            </Principal>
+            <Dependent Role="VERIFIER">
+              <PropertyRef Name="numTriathlon" />
+              <PropertyRef Name="numDossard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VERIFIER__codePr__37A5467C">
+          <End Role="PRODUIT" Type="Self.PRODUIT" Multiplicity="1" />
+          <End Role="VERIFIER" Type="Self.VERIFIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUIT">
+              <PropertyRef Name="codeProduit" />
+            </Principal>
+            <Dependent Role="VERIFIER">
+              <PropertyRef Name="codeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="triathlonDB_EntityModelStoreContainer">
+          <EntitySet Name="AGE" EntityType="Self.AGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INSCRIPTION" EntityType="Self.INSCRIPTION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUIT" EntityType="Self.PRODUIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRIATHLETE" EntityType="Self.TRIATHLETE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRIATHLON" EntityType="Self.TRIATHLON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPE_TRIATHLON" EntityType="Self.TYPE_TRIATHLON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VERIFIER" EntityType="Self.VERIFIER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__INSCRIPTI__numer__34C8D9D1" Association="Self.FK__INSCRIPTI__numer__34C8D9D1">
+            <End Role="TRIATHLETE" EntitySet="TRIATHLETE" />
+            <End Role="INSCRIPTION" EntitySet="INSCRIPTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INSCRIPTI__numTr__33D4B598" Association="Self.FK__INSCRIPTI__numTr__33D4B598">
+            <End Role="TRIATHLON" EntitySet="TRIATHLON" />
+            <End Role="INSCRIPTION" EntitySet="INSCRIPTION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TRIATHLET__codeA__2D27B809" Association="Self.FK__TRIATHLET__codeA__2D27B809">
+            <End Role="AGE" EntitySet="AGE" />
+            <End Role="TRIATHLETE" EntitySet="TRIATHLETE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TRIATHLON__codeT__300424B4" Association="Self.FK__TRIATHLON__codeT__300424B4">
+            <End Role="TYPE_TRIATHLON" EntitySet="TYPE_TRIATHLON" />
+            <End Role="TRIATHLON" EntitySet="TRIATHLON" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VERIFIER__38996AB5" Association="Self.FK__VERIFIER__38996AB5">
+            <End Role="INSCRIPTION" EntitySet="INSCRIPTION" />
+            <End Role="VERIFIER" EntitySet="VERIFIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VERIFIER__codePr__37A5467C" Association="Self.FK__VERIFIER__codePr__37A5467C">
+            <End Role="PRODUIT" EntitySet="PRODUIT" />
+            <End Role="VERIFIER" EntitySet="VERIFIER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="triathlonDB_EntityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGE">
+          <Key>
+            <PropertyRef Name="codeAge" />
+          </Key>
+          <Property Name="codeAge" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AgeDebut" Type="Int16" Nullable="false" />
+          <Property Name="AgeFin" Type="Int16" Nullable="false" />
+          <Property Name="libelle" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TRIATHLETEs" Relationship="Self.FK__TRIATHLET__codeA__2D27B809" FromRole="AGE" ToRole="TRIATHLETE" />
+        </EntityType>
+        <EntityType Name="INSCRIPTION">
+          <Key>
+            <PropertyRef Name="numTriathlon" />
+            <PropertyRef Name="numDossard" />
+          </Key>
+          <Property Name="numTriathlon" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numDossard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateInscription" Type="DateTime" Precision="0" />
+          <Property Name="tempsCourseCyscliste" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="tempsCourse" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="tempsNatation" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="numeroTriathlete" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TRIATHLETE" Relationship="Self.FK__INSCRIPTI__numer__34C8D9D1" FromRole="INSCRIPTION" ToRole="TRIATHLETE" />
+          <NavigationProperty Name="VERIFIERs" Relationship="Self.FK__VERIFIER__38996AB5" FromRole="INSCRIPTION" ToRole="VERIFIER" />
+          <NavigationProperty Name="TRIATHLON" Relationship="triathlonDB_EntityModel.FK__INSCRIPTI__numTr__33D4B598" FromRole="INSCRIPTION" ToRole="TRIATHLON" />
+        </EntityType>
+        <EntityType Name="PRODUIT">
+          <Key>
+            <PropertyRef Name="codeProduit" />
+          </Key>
+          <Property Name="codeProduit" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tauxMax" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <NavigationProperty Name="VERIFIERs" Relationship="Self.FK__VERIFIER__codePr__37A5467C" FromRole="PRODUIT" ToRole="VERIFIER" />
+        </EntityType>
+        <EntityType Name="TRIATHLETE">
+          <Key>
+            <PropertyRef Name="numeroTriathlete" />
+          </Key>
+          <Property Name="numeroTriathlete" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateNaissance" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="pays" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="numLicence" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateObtention" Type="DateTime" Precision="0" />
+          <Property Name="codePostal" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="codeAge" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AGE" Relationship="Self.FK__TRIATHLET__codeA__2D27B809" FromRole="TRIATHLETE" ToRole="AGE" />
+          <NavigationProperty Name="INSCRIPTIONs" Relationship="Self.FK__INSCRIPTI__numer__34C8D9D1" FromRole="TRIATHLETE" ToRole="INSCRIPTION" />
+        </EntityType>
+        <EntityType Name="TYPE_TRIATHLON">
+          <Key>
+            <PropertyRef Name="codeType" />
+          </Key>
+          <Property Name="codeType" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="distanceNatation" Type="Int32" Nullable="false" />
+          <Property Name="distanceCyclisme" Type="Int32" Nullable="false" />
+          <Property Name="distanceCourse" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TRIATHLONs" Relationship="triathlonDB_EntityModel.FK__TRIATHLON__codeT__300424B4" FromRole="TYPE_TRIATHLON" ToRole="TRIATHLON" />
+        </EntityType>
+        <EntityType Name="VERIFIER">
+          <Key>
+            <PropertyRef Name="codeProduit" />
+            <PropertyRef Name="numTriathlon" />
+            <PropertyRef Name="numDossard" />
+          </Key>
+          <Property Name="codeProduit" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numTriathlon" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="numDossard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prelevement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="INSCRIPTION" Relationship="Self.FK__VERIFIER__38996AB5" FromRole="VERIFIER" ToRole="INSCRIPTION" />
+          <NavigationProperty Name="PRODUIT" Relationship="Self.FK__VERIFIER__codePr__37A5467C" FromRole="VERIFIER" ToRole="PRODUIT" />
+        </EntityType>
+        <Association Name="FK__TRIATHLET__codeA__2D27B809">
+          <End Role="AGE" Type="Self.AGE" Multiplicity="1" />
+          <End Role="TRIATHLETE" Type="Self.TRIATHLETE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGE">
+              <PropertyRef Name="codeAge" />
+            </Principal>
+            <Dependent Role="TRIATHLETE">
+              <PropertyRef Name="codeAge" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INSCRIPTI__numer__34C8D9D1">
+          <End Role="TRIATHLETE" Type="Self.TRIATHLETE" Multiplicity="1" />
+          <End Role="INSCRIPTION" Type="Self.INSCRIPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRIATHLETE">
+              <PropertyRef Name="numeroTriathlete" />
+            </Principal>
+            <Dependent Role="INSCRIPTION">
+              <PropertyRef Name="numeroTriathlete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VERIFIER__38996AB5">
+          <End Role="INSCRIPTION" Type="Self.INSCRIPTION" Multiplicity="1" />
+          <End Role="VERIFIER" Type="Self.VERIFIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INSCRIPTION">
+              <PropertyRef Name="numTriathlon" />
+              <PropertyRef Name="numDossard" />
+            </Principal>
+            <Dependent Role="VERIFIER">
+              <PropertyRef Name="numTriathlon" />
+              <PropertyRef Name="numDossard" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VERIFIER__codePr__37A5467C">
+          <End Role="PRODUIT" Type="Self.PRODUIT" Multiplicity="1" />
+          <End Role="VERIFIER" Type="Self.VERIFIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUIT">
+              <PropertyRef Name="codeProduit" />
+            </Principal>
+            <Dependent Role="VERIFIER">
+              <PropertyRef Name="codeProduit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TriathlonEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGEs" EntityType="Self.AGE" />
+          <EntitySet Name="INSCRIPTIONs" EntityType="Self.INSCRIPTION" />
+          <EntitySet Name="PRODUITs" EntityType="Self.PRODUIT" />
+          <EntitySet Name="TRIATHLETEs" EntityType="Self.TRIATHLETE" />
+          <EntitySet Name="TYPE_TRIATHLON" EntityType="Self.TYPE_TRIATHLON" />
+          <EntitySet Name="VERIFIERs" EntityType="Self.VERIFIER" />
+          <AssociationSet Name="FK__TRIATHLET__codeA__2D27B809" Association="Self.FK__TRIATHLET__codeA__2D27B809">
+            <End Role="AGE" EntitySet="AGEs" />
+            <End Role="TRIATHLETE" EntitySet="TRIATHLETEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INSCRIPTI__numer__34C8D9D1" Association="Self.FK__INSCRIPTI__numer__34C8D9D1">
+            <End Role="TRIATHLETE" EntitySet="TRIATHLETEs" />
+            <End Role="INSCRIPTION" EntitySet="INSCRIPTIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VERIFIER__38996AB5" Association="Self.FK__VERIFIER__38996AB5">
+            <End Role="INSCRIPTION" EntitySet="INSCRIPTIONs" />
+            <End Role="VERIFIER" EntitySet="VERIFIERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VERIFIER__codePr__37A5467C" Association="Self.FK__VERIFIER__codePr__37A5467C">
+            <End Role="PRODUIT" EntitySet="PRODUITs" />
+            <End Role="VERIFIER" EntitySet="VERIFIERs" />
+          </AssociationSet>
+          <EntitySet Name="TRIATHLONs" EntityType="triathlonDB_EntityModel.TRIATHLON" />
+          <AssociationSet Name="FK__INSCRIPTI__numTr__33D4B598" Association="triathlonDB_EntityModel.FK__INSCRIPTI__numTr__33D4B598">
+            <End Role="TRIATHLON" EntitySet="TRIATHLONs" />
+            <End Role="INSCRIPTION" EntitySet="INSCRIPTIONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TRIATHLON__codeT__300424B4" Association="triathlonDB_EntityModel.FK__TRIATHLON__codeT__300424B4">
+            <End Role="TYPE_TRIATHLON" EntitySet="TYPE_TRIATHLON" />
+            <End Role="TRIATHLON" EntitySet="TRIATHLONs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TRIATHLON">
+          <Key>
+            <PropertyRef Name="numTriathlon" />
+          </Key>
+          <Property Name="numTriathlon" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="lieu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateTriathlon" Type="DateTime" Precision="0" />
+          <Property Name="codeType" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INSCRIPTIONs" Relationship="triathlonDB_EntityModel.FK__INSCRIPTI__numTr__33D4B598" FromRole="TRIATHLON" ToRole="INSCRIPTION" />
+          <NavigationProperty Name="TYPE_TRIATHLON" Relationship="triathlonDB_EntityModel.FK__TRIATHLON__codeT__300424B4" FromRole="TRIATHLON" ToRole="TYPE_TRIATHLON" />
+        </EntityType>
+        <Association Name="FK__INSCRIPTI__numTr__33D4B598">
+          <End Type="triathlonDB_EntityModel.TRIATHLON" Role="TRIATHLON" Multiplicity="1" />
+          <End Type="triathlonDB_EntityModel.INSCRIPTION" Role="INSCRIPTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TRIATHLON">
+              <PropertyRef Name="numTriathlon" />
+            </Principal>
+            <Dependent Role="INSCRIPTION">
+              <PropertyRef Name="numTriathlon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TRIATHLON__codeT__300424B4">
+          <End Type="triathlonDB_EntityModel.TYPE_TRIATHLON" Role="TYPE_TRIATHLON" Multiplicity="1" />
+          <End Type="triathlonDB_EntityModel.TRIATHLON" Role="TRIATHLON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_TRIATHLON">
+              <PropertyRef Name="codeType" />
+            </Principal>
+            <Dependent Role="TRIATHLON">
+              <PropertyRef Name="codeType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="triathlonDB_EntityModelStoreContainer" CdmEntityContainer="TriathlonEntities">
+          <EntitySetMapping Name="AGEs">
+            <EntityTypeMapping TypeName="triathlonDB_EntityModel.AGE">
+              <MappingFragment StoreEntitySet="AGE">
+                <ScalarProperty Name="codeAge" ColumnName="codeAge" />
+                <ScalarProperty Name="AgeDebut" ColumnName="AgeDebut" />
+                <ScalarProperty Name="AgeFin" ColumnName="AgeFin" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSCRIPTIONs">
+            <EntityTypeMapping TypeName="triathlonDB_EntityModel.INSCRIPTION">
+              <MappingFragment StoreEntitySet="INSCRIPTION">
+                <ScalarProperty Name="numTriathlon" ColumnName="numTriathlon" />
+                <ScalarProperty Name="numDossard" ColumnName="numDossard" />
+                <ScalarProperty Name="dateInscription" ColumnName="dateInscription" />
+                <ScalarProperty Name="tempsCourseCyscliste" ColumnName="tempsCourseCyscliste" />
+                <ScalarProperty Name="tempsCourse" ColumnName="tempsCourse" />
+                <ScalarProperty Name="tempsNatation" ColumnName="tempsNatation" />
+                <ScalarProperty Name="numeroTriathlete" ColumnName="numeroTriathlete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUITs">
+            <EntityTypeMapping TypeName="triathlonDB_EntityModel.PRODUIT">
+              <MappingFragment StoreEntitySet="PRODUIT">
+                <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
+                <ScalarProperty Name="libelle" ColumnName="libelle" />
+                <ScalarProperty Name="tauxMax" ColumnName="tauxMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRIATHLETEs">
+            <EntityTypeMapping TypeName="triathlonDB_EntityModel.TRIATHLETE">
+              <MappingFragment StoreEntitySet="TRIATHLETE">
+                <ScalarProperty Name="numeroTriathlete" ColumnName="numeroTriathlete" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="dateNaissance" ColumnName="dateNaissance" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="numLicence" ColumnName="numLicence" />
+                <ScalarProperty Name="dateObtention" ColumnName="dateObtention" />
+                <ScalarProperty Name="codePostal" ColumnName="codePostal" />
+                <ScalarProperty Name="codeAge" ColumnName="codeAge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPE_TRIATHLON">
+            <EntityTypeMapping TypeName="triathlonDB_EntityModel.TYPE_TRIATHLON">
+              <MappingFragment StoreEntitySet="TYPE_TRIATHLON">
+                <ScalarProperty Name="codeType" ColumnName="codeType" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="distanceNatation" ColumnName="distanceNatation" />
+                <ScalarProperty Name="distanceCyclisme" ColumnName="distanceCyclisme" />
+                <ScalarProperty Name="distanceCourse" ColumnName="distanceCourse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VERIFIERs">
+            <EntityTypeMapping TypeName="triathlonDB_EntityModel.VERIFIER">
+              <MappingFragment StoreEntitySet="VERIFIER">
+                <ScalarProperty Name="codeProduit" ColumnName="codeProduit" />
+                <ScalarProperty Name="numTriathlon" ColumnName="numTriathlon" />
+                <ScalarProperty Name="numDossard" ColumnName="numDossard" />
+                <ScalarProperty Name="prelevement" ColumnName="prelevement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRIATHLONs">
+            <EntityTypeMapping TypeName="triathlonDB_EntityModel.TRIATHLON">
+              <MappingFragment StoreEntitySet="TRIATHLON">
+                <ScalarProperty Name="codeType" ColumnName="codeType" />
+                <ScalarProperty Name="dateTriathlon" ColumnName="dateTriathlon" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="lieu" ColumnName="lieu" />
+                <ScalarProperty Name="numTriathlon" ColumnName="numTriathlon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

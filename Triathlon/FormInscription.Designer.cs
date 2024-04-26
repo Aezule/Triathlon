@@ -38,10 +38,10 @@
             this.lbltriathlète = new System.Windows.Forms.Label();
             this.lblTriathlon = new System.Windows.Forms.Label();
             this.tabPageSuppInsc = new System.Windows.Forms.TabPage();
-            this.comboBoxTriathlon = new System.Windows.Forms.ComboBox();
-            this.lblInscription = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSupp = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblInscription = new System.Windows.Forms.Label();
+            this.comboBoxTriathlon = new System.Windows.Forms.ComboBox();
             this.tabControlInscription.SuspendLayout();
             this.tabPageAjoutInsc.SuspendLayout();
             this.tabPageSuppInsc.SuspendLayout();
@@ -82,7 +82,7 @@
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(270, 57);
             this.btnAjouter.TabIndex = 6;
-            this.btnAjouter.Text = "Ajouter :)";
+            this.btnAjouter.Text = "Ajouter ";
             this.btnAjouter.UseVisualStyleBackColor = false;
             // 
             // lblDate
@@ -151,22 +151,15 @@
             this.tabPageSuppInsc.Text = "Supprimer une Inscription";
             this.tabPageSuppInsc.UseVisualStyleBackColor = true;
             // 
-            // comboBoxTriathlon
+            // btnSupp
             // 
-            this.comboBoxTriathlon.FormattingEnabled = true;
-            this.comboBoxTriathlon.Location = new System.Drawing.Point(48, 32);
-            this.comboBoxTriathlon.Name = "comboBoxTriathlon";
-            this.comboBoxTriathlon.Size = new System.Drawing.Size(151, 24);
-            this.comboBoxTriathlon.TabIndex = 0;
-            // 
-            // lblInscription
-            // 
-            this.lblInscription.AutoSize = true;
-            this.lblInscription.Location = new System.Drawing.Point(45, 4);
-            this.lblInscription.Name = "lblInscription";
-            this.lblInscription.Size = new System.Drawing.Size(154, 16);
-            this.lblInscription.TabIndex = 1;
-            this.lblInscription.Text = "Séléctionner un triathlon :";
+            this.btnSupp.BackColor = System.Drawing.Color.IndianRed;
+            this.btnSupp.Location = new System.Drawing.Point(48, 346);
+            this.btnSupp.Name = "btnSupp";
+            this.btnSupp.Size = new System.Drawing.Size(677, 44);
+            this.btnSupp.TabIndex = 3;
+            this.btnSupp.Text = "Supprimer";
+            this.btnSupp.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
@@ -178,15 +171,22 @@
             this.dataGridView1.Size = new System.Drawing.Size(754, 275);
             this.dataGridView1.TabIndex = 2;
             // 
-            // btnSupp
+            // lblInscription
             // 
-            this.btnSupp.BackColor = System.Drawing.Color.IndianRed;
-            this.btnSupp.Location = new System.Drawing.Point(48, 346);
-            this.btnSupp.Name = "btnSupp";
-            this.btnSupp.Size = new System.Drawing.Size(677, 44);
-            this.btnSupp.TabIndex = 3;
-            this.btnSupp.Text = "Supprimer";
-            this.btnSupp.UseVisualStyleBackColor = false;
+            this.lblInscription.AutoSize = true;
+            this.lblInscription.Location = new System.Drawing.Point(45, 4);
+            this.lblInscription.Name = "lblInscription";
+            this.lblInscription.Size = new System.Drawing.Size(154, 16);
+            this.lblInscription.TabIndex = 1;
+            this.lblInscription.Text = "Séléctionner un triathlon :";
+            // 
+            // comboBoxTriathlon
+            // 
+            this.comboBoxTriathlon.FormattingEnabled = true;
+            this.comboBoxTriathlon.Location = new System.Drawing.Point(48, 32);
+            this.comboBoxTriathlon.Name = "comboBoxTriathlon";
+            this.comboBoxTriathlon.Size = new System.Drawing.Size(151, 24);
+            this.comboBoxTriathlon.TabIndex = 0;
             // 
             // FormInscription
             // 

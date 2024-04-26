@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d6fb7a34195d4c84b99bad8dab881078" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="triathlonDB_EntityModel.AGE" Width="1.5" PointX="1.5" PointY="1.625" IsExpanded="true" FillColor="SlateBlue" />
+        <EntityTypeShape EntityType="triathlonDB_EntityModel.INSCRIPTION" Width="1.5" PointX="6.75" PointY="1.25" IsExpanded="true" FillColor="DarkBlue" />
+        <EntityTypeShape EntityType="triathlonDB_EntityModel.PRODUIT" Width="1.5" PointX="11.375" PointY="2.25" IsExpanded="true" FillColor="192, 255, 192" />
+        <EntityTypeShape EntityType="triathlonDB_EntityModel.TRIATHLETE" Width="1.5" PointX="4.125" PointY="1" IsExpanded="true" FillColor="255, 192, 192" />
+        <EntityTypeShape EntityType="triathlonDB_EntityModel.TYPE_TRIATHLON" Width="1.5" PointX="4.5" PointY="5" IsExpanded="true" FillColor="Black" />
+        <EntityTypeShape EntityType="triathlonDB_EntityModel.VERIFIER" Width="1.5" PointX="9.5" PointY="1.625" IsExpanded="true" FillColor="192, 255, 255" />
+        <AssociationConnector Association="triathlonDB_EntityModel.FK__TRIATHLET__codeA__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="triathlonDB_EntityModel.FK__INSCRIPTI__numer__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="triathlonDB_EntityModel.FK__VERIFIER__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="triathlonDB_EntityModel.FK__VERIFIER__codePr__37A5467C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="triathlonDB_EntityModel.TRIATHLON" Width="1.5" PointX="7.25" PointY="4.75" FillColor="Red" />
+        <AssociationConnector Association="triathlonDB_EntityModel.FK__INSCRIPTI__numTr__33D4B598" />
+        <AssociationConnector Association="triathlonDB_EntityModel.FK__TRIATHLON__codeT__300424B4" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
