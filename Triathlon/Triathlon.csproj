@@ -123,6 +123,7 @@
     <Compile Include="TYPE_TRIATHLON.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
+    <Compile Include="Type_Triathlon_Suite.cs" />
     <Compile Include="VERIFIER.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>

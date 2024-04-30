@@ -9,6 +9,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection.Emit;
 
 namespace Triathlon
 {
@@ -42,26 +43,42 @@ namespace Triathlon
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-           /*
-            
-            Erreur voir plus tard
-             
-            TRIATHLON unTL = (TRIATHLON)TriathlonBinding.Current;
-            try
-            {  
-                TriathlonBinding.EndEdit();
-                context.TRIATHLONs.Add(unTL);
-                context.SaveChanges();
-                TriathlonBinding.ResetBindings(false);
 
-            }
-            catch (Exception ex)
+            DialogResult dialogResult = MessageBox.Show("Etes-vous sur de vouloir modifier le triathlon ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
             {
+                TRIATHLON unTL = new TRIATHLON();
+                unTL = (TRIATHLON)TriathlonBinding.Current;
+                try
+                {
+                    TriathlonBinding.EndEdit();
+                    context.SaveChanges();
+                    MessageBox.Show("Modification reussite!", "confirmation", MessageBoxButtons.OK);
+                }
+                catch
+                {
+                    context.Entry(unTL).State = EntityState.Unchanged; 
+                    TriathlonBinding.ResetCurrentItem();
+                }
 
-                context.Entry((TRIATHLON)TriathlonBinding.Current).State = EntityState.Unchanged;
-                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           */
+      
+        }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            TriathlonBinding.CancelEdit();
+
+        }
+
+        private void tabControlTriathlon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControlTriathlon.SelectedIndex == 0)
+            {
+                TriathlonBinding.CancelEdit();
+            }
+        
+           
         }
     }
 }

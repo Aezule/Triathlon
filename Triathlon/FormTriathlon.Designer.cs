@@ -68,6 +68,7 @@
             this.tabControlTriathlon.SelectedIndex = 0;
             this.tabControlTriathlon.Size = new System.Drawing.Size(776, 426);
             this.tabControlTriathlon.TabIndex = 1;
+            this.tabControlTriathlon.SelectedIndexChanged += new System.EventHandler(this.tabControlTriathlon_SelectedIndexChanged);
             // 
             // tabPageAffTriathlon
             // 
@@ -169,6 +170,7 @@
             this.btnAnnuler.TabIndex = 6;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // btnSupprimer
             // 
