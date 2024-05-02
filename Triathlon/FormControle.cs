@@ -21,5 +21,10 @@ namespace Triathlon
         {
 
         }
+
+        private void lblIdLabo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
