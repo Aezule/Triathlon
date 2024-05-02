@@ -119,6 +119,7 @@
     <Compile Include="TRIATHLETE.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
+    <Compile Include="Triathlete_Suite.cs" />
     <Compile Include="TRIATHLON.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
@@ -161,6 +162,8 @@
       <DependentUpon>ModeleGestionTriathlon.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\INSCRIPTION.datasource" />
+    <None Include="Properties\DataSources\TRIATHLETE.datasource" />
     <None Include="Properties\DataSources\TRIATHLON.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

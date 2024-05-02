@@ -32,14 +32,6 @@
             this.tabControlTriathlon = new System.Windows.Forms.TabControl();
             this.tabPageAffTriathlon = new System.Windows.Forms.TabPage();
             this.dataGridTriathlon = new System.Windows.Forms.DataGridView();
-            this.numTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lieuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iNSCRIPTIONsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tYPETRIATHLONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TriathlonBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDetails = new System.Windows.Forms.TabPage();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtLieu = new System.Windows.Forms.TextBox();
@@ -52,11 +44,19 @@
             this.lblLieu = new System.Windows.Forms.Label();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblNumero = new System.Windows.Forms.Label();
+            this.numTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lieuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iNSCRIPTIONsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tYPETRIATHLONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TriathlonBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabControlTriathlon.SuspendLayout();
             this.tabPageAffTriathlon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTriathlon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TriathlonBinding)).BeginInit();
             this.tabPageDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TriathlonBinding)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlTriathlon
@@ -105,74 +105,7 @@
             this.dataGridTriathlon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridTriathlon.Size = new System.Drawing.Size(756, 385);
             this.dataGridTriathlon.TabIndex = 1;
-            this.dataGridTriathlon.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridTriathlon_CellMouseClick);
-            // 
-            // numTriathlonDataGridViewTextBoxColumn
-            // 
-            this.numTriathlonDataGridViewTextBoxColumn.DataPropertyName = "numTriathlon";
-            this.numTriathlonDataGridViewTextBoxColumn.HeaderText = "numTriathlon";
-            this.numTriathlonDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numTriathlonDataGridViewTextBoxColumn.Name = "numTriathlonDataGridViewTextBoxColumn";
-            this.numTriathlonDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numTriathlonDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // lieuDataGridViewTextBoxColumn
-            // 
-            this.lieuDataGridViewTextBoxColumn.DataPropertyName = "lieu";
-            this.lieuDataGridViewTextBoxColumn.HeaderText = "lieu";
-            this.lieuDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.lieuDataGridViewTextBoxColumn.Name = "lieuDataGridViewTextBoxColumn";
-            this.lieuDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lieuDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // nomDataGridViewTextBoxColumn
-            // 
-            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
-            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
-            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
-            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dateTriathlonDataGridViewTextBoxColumn
-            // 
-            this.dateTriathlonDataGridViewTextBoxColumn.DataPropertyName = "dateTriathlon";
-            this.dateTriathlonDataGridViewTextBoxColumn.HeaderText = "dateTriathlon";
-            this.dateTriathlonDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateTriathlonDataGridViewTextBoxColumn.Name = "dateTriathlonDataGridViewTextBoxColumn";
-            this.dateTriathlonDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateTriathlonDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // codeTypeDataGridViewTextBoxColumn
-            // 
-            this.codeTypeDataGridViewTextBoxColumn.DataPropertyName = "codeType";
-            this.codeTypeDataGridViewTextBoxColumn.HeaderText = "codeType";
-            this.codeTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.codeTypeDataGridViewTextBoxColumn.Name = "codeTypeDataGridViewTextBoxColumn";
-            this.codeTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.codeTypeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // iNSCRIPTIONsDataGridViewTextBoxColumn
-            // 
-            this.iNSCRIPTIONsDataGridViewTextBoxColumn.DataPropertyName = "INSCRIPTIONs";
-            this.iNSCRIPTIONsDataGridViewTextBoxColumn.HeaderText = "INSCRIPTIONs";
-            this.iNSCRIPTIONsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.iNSCRIPTIONsDataGridViewTextBoxColumn.Name = "iNSCRIPTIONsDataGridViewTextBoxColumn";
-            this.iNSCRIPTIONsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iNSCRIPTIONsDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // tYPETRIATHLONDataGridViewTextBoxColumn
-            // 
-            this.tYPETRIATHLONDataGridViewTextBoxColumn.DataPropertyName = "TYPE_TRIATHLON";
-            this.tYPETRIATHLONDataGridViewTextBoxColumn.HeaderText = "TYPE_TRIATHLON";
-            this.tYPETRIATHLONDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tYPETRIATHLONDataGridViewTextBoxColumn.Name = "tYPETRIATHLONDataGridViewTextBoxColumn";
-            this.tYPETRIATHLONDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tYPETRIATHLONDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // TriathlonBinding
-            // 
-            this.TriathlonBinding.DataSource = typeof(Triathlon.TRIATHLON);
+            this.dataGridTriathlon.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridTriathlon_CellMouseClick);
             // 
             // tabPageDetails
             // 
@@ -297,6 +230,73 @@
             this.lblNumero.TabIndex = 0;
             this.lblNumero.Text = "Numéro Triathlon :";
             // 
+            // numTriathlonDataGridViewTextBoxColumn
+            // 
+            this.numTriathlonDataGridViewTextBoxColumn.DataPropertyName = "numTriathlon";
+            this.numTriathlonDataGridViewTextBoxColumn.HeaderText = "numTriathlon";
+            this.numTriathlonDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.numTriathlonDataGridViewTextBoxColumn.Name = "numTriathlonDataGridViewTextBoxColumn";
+            this.numTriathlonDataGridViewTextBoxColumn.ReadOnly = true;
+            this.numTriathlonDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // lieuDataGridViewTextBoxColumn
+            // 
+            this.lieuDataGridViewTextBoxColumn.DataPropertyName = "lieu";
+            this.lieuDataGridViewTextBoxColumn.HeaderText = "lieu";
+            this.lieuDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.lieuDataGridViewTextBoxColumn.Name = "lieuDataGridViewTextBoxColumn";
+            this.lieuDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lieuDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nomDataGridViewTextBoxColumn
+            // 
+            this.nomDataGridViewTextBoxColumn.DataPropertyName = "nom";
+            this.nomDataGridViewTextBoxColumn.HeaderText = "nom";
+            this.nomDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nomDataGridViewTextBoxColumn.Name = "nomDataGridViewTextBoxColumn";
+            this.nomDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dateTriathlonDataGridViewTextBoxColumn
+            // 
+            this.dateTriathlonDataGridViewTextBoxColumn.DataPropertyName = "dateTriathlon";
+            this.dateTriathlonDataGridViewTextBoxColumn.HeaderText = "dateTriathlon";
+            this.dateTriathlonDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dateTriathlonDataGridViewTextBoxColumn.Name = "dateTriathlonDataGridViewTextBoxColumn";
+            this.dateTriathlonDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateTriathlonDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // codeTypeDataGridViewTextBoxColumn
+            // 
+            this.codeTypeDataGridViewTextBoxColumn.DataPropertyName = "codeType";
+            this.codeTypeDataGridViewTextBoxColumn.HeaderText = "codeType";
+            this.codeTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.codeTypeDataGridViewTextBoxColumn.Name = "codeTypeDataGridViewTextBoxColumn";
+            this.codeTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.codeTypeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // iNSCRIPTIONsDataGridViewTextBoxColumn
+            // 
+            this.iNSCRIPTIONsDataGridViewTextBoxColumn.DataPropertyName = "INSCRIPTIONs";
+            this.iNSCRIPTIONsDataGridViewTextBoxColumn.HeaderText = "INSCRIPTIONs";
+            this.iNSCRIPTIONsDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.iNSCRIPTIONsDataGridViewTextBoxColumn.Name = "iNSCRIPTIONsDataGridViewTextBoxColumn";
+            this.iNSCRIPTIONsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.iNSCRIPTIONsDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tYPETRIATHLONDataGridViewTextBoxColumn
+            // 
+            this.tYPETRIATHLONDataGridViewTextBoxColumn.DataPropertyName = "TYPE_TRIATHLON";
+            this.tYPETRIATHLONDataGridViewTextBoxColumn.HeaderText = "TYPE_TRIATHLON";
+            this.tYPETRIATHLONDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tYPETRIATHLONDataGridViewTextBoxColumn.Name = "tYPETRIATHLONDataGridViewTextBoxColumn";
+            this.tYPETRIATHLONDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tYPETRIATHLONDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // TriathlonBinding
+            // 
+            this.TriathlonBinding.DataSource = typeof(Triathlon.TRIATHLON);
+            // 
             // FormTriathlon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -310,9 +310,9 @@
             this.tabControlTriathlon.ResumeLayout(false);
             this.tabPageAffTriathlon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTriathlon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TriathlonBinding)).EndInit();
             this.tabPageDetails.ResumeLayout(false);
             this.tabPageDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TriathlonBinding)).EndInit();
             this.ResumeLayout(false);
 
         }
