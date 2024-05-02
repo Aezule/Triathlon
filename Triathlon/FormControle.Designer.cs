@@ -28,10 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControleDopage = new System.Windows.Forms.TabControl();
             this.tabPageAffDopage = new System.Windows.Forms.TabPage();
             this.dataGridDopage = new System.Windows.Forms.DataGridView();
+            this.numTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.INSCRIPTION = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numDossard = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeProduit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prelevement = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRODUIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VerifBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDetails = new System.Windows.Forms.TabPage();
+            this.btnSupprimer = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
+            this.txtBoxCodeProduit = new System.Windows.Forms.TextBox();
+            this.txtBoxIdLabo = new System.Windows.Forms.TextBox();
+            this.txtBoxNumTriathlon = new System.Windows.Forms.TextBox();
+            this.txtboxPositif = new System.Windows.Forms.TextBox();
+            this.txtboxNumTriathlete = new System.Windows.Forms.TextBox();
+            this.txtboxTauxPrelev = new System.Windows.Forms.TextBox();
+            this.txtboxIdControle = new System.Windows.Forms.TextBox();
             this.lblCodeProduit = new System.Windows.Forms.Label();
             this.lblIdLabo = new System.Windows.Forms.Label();
             this.lblNumTriathlon = new System.Windows.Forms.Label();
@@ -39,19 +57,12 @@
             this.lblPrélèvement = new System.Windows.Forms.Label();
             this.lblVerif = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
-            this.txtboxIdControle = new System.Windows.Forms.TextBox();
-            this.txtboxTauxPrelev = new System.Windows.Forms.TextBox();
-            this.txtboxNumTriathlete = new System.Windows.Forms.TextBox();
-            this.txtboxPositif = new System.Windows.Forms.TextBox();
-            this.txtBoxNumTriathlon = new System.Windows.Forms.TextBox();
-            this.txtBoxIdLabo = new System.Windows.Forms.TextBox();
-            this.txtBoxCodeProduit = new System.Windows.Forms.TextBox();
-            this.btnValider = new System.Windows.Forms.Button();
-            this.btnAnnuler = new System.Windows.Forms.Button();
-            this.btnSupprimer = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControleDopage.SuspendLayout();
             this.tabPageAffDopage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDopage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VerifBinding)).BeginInit();
             this.tabPageDetails.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,13 +89,80 @@
             // 
             // dataGridDopage
             // 
+            this.dataGridDopage.AutoGenerateColumns = false;
             this.dataGridDopage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDopage.Location = new System.Drawing.Point(7, 7);
+            this.dataGridDopage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numTriathlonDataGridViewTextBoxColumn,
+            this.INSCRIPTION,
+            this.numDossard,
+            this.codeProduit,
+            this.prelevement,
+            this.PRODUIT});
+            this.dataGridDopage.DataSource = this.VerifBinding;
+            this.dataGridDopage.Location = new System.Drawing.Point(6, 7);
             this.dataGridDopage.Name = "dataGridDopage";
             this.dataGridDopage.RowHeadersWidth = 51;
             this.dataGridDopage.RowTemplate.Height = 24;
             this.dataGridDopage.Size = new System.Drawing.Size(755, 384);
             this.dataGridDopage.TabIndex = 0;
+            // 
+            // numTriathlonDataGridViewTextBoxColumn
+            // 
+            this.numTriathlonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.numTriathlonDataGridViewTextBoxColumn.DataPropertyName = "numTriathlon";
+            this.numTriathlonDataGridViewTextBoxColumn.HeaderText = "Triathlon";
+            this.numTriathlonDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.numTriathlonDataGridViewTextBoxColumn.Name = "numTriathlonDataGridViewTextBoxColumn";
+            this.numTriathlonDataGridViewTextBoxColumn.Width = 88;
+            // 
+            // INSCRIPTION
+            // 
+            this.INSCRIPTION.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.INSCRIPTION.DataPropertyName = "INSCRIPTION";
+            this.INSCRIPTION.HeaderText = "Triathlète";
+            this.INSCRIPTION.MinimumWidth = 6;
+            this.INSCRIPTION.Name = "INSCRIPTION";
+            this.INSCRIPTION.Width = 92;
+            // 
+            // numDossard
+            // 
+            this.numDossard.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.numDossard.DataPropertyName = "numDossard";
+            this.numDossard.HeaderText = "Dossard";
+            this.numDossard.MinimumWidth = 6;
+            this.numDossard.Name = "numDossard";
+            this.numDossard.Width = 88;
+            // 
+            // codeProduit
+            // 
+            this.codeProduit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.codeProduit.DataPropertyName = "codeProduit";
+            this.codeProduit.HeaderText = "Produit";
+            this.codeProduit.MinimumWidth = 6;
+            this.codeProduit.Name = "codeProduit";
+            this.codeProduit.Width = 78;
+            // 
+            // prelevement
+            // 
+            this.prelevement.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.prelevement.DataPropertyName = "prelevement";
+            this.prelevement.HeaderText = "Prelevement";
+            this.prelevement.MinimumWidth = 6;
+            this.prelevement.Name = "prelevement";
+            this.prelevement.Width = 112;
+            // 
+            // PRODUIT
+            // 
+            this.PRODUIT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.PRODUIT.DataPropertyName = "PRODUIT";
+            this.PRODUIT.HeaderText = "Produit";
+            this.PRODUIT.MinimumWidth = 6;
+            this.PRODUIT.Name = "PRODUIT";
+            this.PRODUIT.Width = 78;
+            // 
+            // VerifBinding
+            // 
+            this.VerifBinding.DataSource = typeof(Triathlon.VERIFIER);
             // 
             // tabPageDetails
             // 
@@ -112,6 +190,86 @@
             this.tabPageDetails.TabIndex = 1;
             this.tabPageDetails.Text = "Détails";
             this.tabPageDetails.UseVisualStyleBackColor = true;
+            // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.BackColor = System.Drawing.Color.Red;
+            this.btnSupprimer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSupprimer.Location = new System.Drawing.Point(561, 111);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(98, 52);
+            this.btnSupprimer.TabIndex = 16;
+            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.UseVisualStyleBackColor = false;
+            // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.LightCoral;
+            this.btnAnnuler.Location = new System.Drawing.Point(621, 44);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(92, 51);
+            this.btnAnnuler.TabIndex = 15;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            // 
+            // btnValider
+            // 
+            this.btnValider.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnValider.Location = new System.Drawing.Point(501, 45);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(96, 50);
+            this.btnValider.TabIndex = 14;
+            this.btnValider.Text = "Valider";
+            this.btnValider.UseVisualStyleBackColor = false;
+            // 
+            // txtBoxCodeProduit
+            // 
+            this.txtBoxCodeProduit.Location = new System.Drawing.Point(294, 247);
+            this.txtBoxCodeProduit.Name = "txtBoxCodeProduit";
+            this.txtBoxCodeProduit.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxCodeProduit.TabIndex = 13;
+            // 
+            // txtBoxIdLabo
+            // 
+            this.txtBoxIdLabo.Location = new System.Drawing.Point(294, 208);
+            this.txtBoxIdLabo.Name = "txtBoxIdLabo";
+            this.txtBoxIdLabo.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxIdLabo.TabIndex = 12;
+            // 
+            // txtBoxNumTriathlon
+            // 
+            this.txtBoxNumTriathlon.Location = new System.Drawing.Point(294, 173);
+            this.txtBoxNumTriathlon.Name = "txtBoxNumTriathlon";
+            this.txtBoxNumTriathlon.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxNumTriathlon.TabIndex = 11;
+            // 
+            // txtboxPositif
+            // 
+            this.txtboxPositif.Location = new System.Drawing.Point(294, 112);
+            this.txtboxPositif.Name = "txtboxPositif";
+            this.txtboxPositif.Size = new System.Drawing.Size(100, 22);
+            this.txtboxPositif.TabIndex = 10;
+            // 
+            // txtboxNumTriathlete
+            // 
+            this.txtboxNumTriathlete.Location = new System.Drawing.Point(294, 144);
+            this.txtboxNumTriathlete.Name = "txtboxNumTriathlete";
+            this.txtboxNumTriathlete.Size = new System.Drawing.Size(100, 22);
+            this.txtboxNumTriathlete.TabIndex = 9;
+            // 
+            // txtboxTauxPrelev
+            // 
+            this.txtboxTauxPrelev.Location = new System.Drawing.Point(294, 76);
+            this.txtboxTauxPrelev.Name = "txtboxTauxPrelev";
+            this.txtboxTauxPrelev.Size = new System.Drawing.Size(100, 22);
+            this.txtboxTauxPrelev.TabIndex = 8;
+            // 
+            // txtboxIdControle
+            // 
+            this.txtboxIdControle.Location = new System.Drawing.Point(294, 42);
+            this.txtboxIdControle.Name = "txtboxIdControle";
+            this.txtboxIdControle.Size = new System.Drawing.Size(100, 22);
+            this.txtboxIdControle.TabIndex = 7;
             // 
             // lblCodeProduit
             // 
@@ -176,85 +334,23 @@
             this.lblId.TabIndex = 0;
             this.lblId.Text = "Id Contrôle :";
             // 
-            // txtboxIdControle
+            // dataGridViewTextBoxColumn1
             // 
-            this.txtboxIdControle.Location = new System.Drawing.Point(294, 42);
-            this.txtboxIdControle.Name = "txtboxIdControle";
-            this.txtboxIdControle.Size = new System.Drawing.Size(100, 22);
-            this.txtboxIdControle.TabIndex = 7;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "INSCRIPTION";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Triathlète";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
-            // txtboxTauxPrelev
+            // dataGridViewTextBoxColumn2
             // 
-            this.txtboxTauxPrelev.Location = new System.Drawing.Point(294, 76);
-            this.txtboxTauxPrelev.Name = "txtboxTauxPrelev";
-            this.txtboxTauxPrelev.Size = new System.Drawing.Size(100, 22);
-            this.txtboxTauxPrelev.TabIndex = 8;
-            // 
-            // txtboxNumTriathlete
-            // 
-            this.txtboxNumTriathlete.Location = new System.Drawing.Point(294, 144);
-            this.txtboxNumTriathlete.Name = "txtboxNumTriathlete";
-            this.txtboxNumTriathlete.Size = new System.Drawing.Size(100, 22);
-            this.txtboxNumTriathlete.TabIndex = 9;
-            // 
-            // txtboxPositif
-            // 
-            this.txtboxPositif.Location = new System.Drawing.Point(294, 112);
-            this.txtboxPositif.Name = "txtboxPositif";
-            this.txtboxPositif.Size = new System.Drawing.Size(100, 22);
-            this.txtboxPositif.TabIndex = 10;
-            // 
-            // txtBoxNumTriathlon
-            // 
-            this.txtBoxNumTriathlon.Location = new System.Drawing.Point(294, 173);
-            this.txtBoxNumTriathlon.Name = "txtBoxNumTriathlon";
-            this.txtBoxNumTriathlon.Size = new System.Drawing.Size(100, 22);
-            this.txtBoxNumTriathlon.TabIndex = 11;
-            // 
-            // txtBoxIdLabo
-            // 
-            this.txtBoxIdLabo.Location = new System.Drawing.Point(294, 208);
-            this.txtBoxIdLabo.Name = "txtBoxIdLabo";
-            this.txtBoxIdLabo.Size = new System.Drawing.Size(100, 22);
-            this.txtBoxIdLabo.TabIndex = 12;
-            // 
-            // txtBoxCodeProduit
-            // 
-            this.txtBoxCodeProduit.Location = new System.Drawing.Point(294, 247);
-            this.txtBoxCodeProduit.Name = "txtBoxCodeProduit";
-            this.txtBoxCodeProduit.Size = new System.Drawing.Size(100, 22);
-            this.txtBoxCodeProduit.TabIndex = 13;
-            // 
-            // btnValider
-            // 
-            this.btnValider.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnValider.Location = new System.Drawing.Point(501, 45);
-            this.btnValider.Name = "btnValider";
-            this.btnValider.Size = new System.Drawing.Size(96, 50);
-            this.btnValider.TabIndex = 14;
-            this.btnValider.Text = "Valider";
-            this.btnValider.UseVisualStyleBackColor = false;
-            // 
-            // btnAnnuler
-            // 
-            this.btnAnnuler.BackColor = System.Drawing.Color.LightCoral;
-            this.btnAnnuler.Location = new System.Drawing.Point(621, 44);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(92, 51);
-            this.btnAnnuler.TabIndex = 15;
-            this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = false;
-            // 
-            // btnSupprimer
-            // 
-            this.btnSupprimer.BackColor = System.Drawing.Color.Red;
-            this.btnSupprimer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSupprimer.Location = new System.Drawing.Point(561, 111);
-            this.btnSupprimer.Name = "btnSupprimer";
-            this.btnSupprimer.Size = new System.Drawing.Size(98, 52);
-            this.btnSupprimer.TabIndex = 16;
-            this.btnSupprimer.Text = "Supprimer";
-            this.btnSupprimer.UseVisualStyleBackColor = false;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "PRODUIT";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Produit";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
             // 
             // FormControle
             // 
@@ -268,6 +364,7 @@
             this.tabControleDopage.ResumeLayout(false);
             this.tabPageAffDopage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDopage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.VerifBinding)).EndInit();
             this.tabPageDetails.ResumeLayout(false);
             this.tabPageDetails.PerformLayout();
             this.ResumeLayout(false);
@@ -297,5 +394,14 @@
         private System.Windows.Forms.TextBox txtboxNumTriathlete;
         private System.Windows.Forms.TextBox txtboxTauxPrelev;
         private System.Windows.Forms.TextBox txtboxIdControle;
+        private System.Windows.Forms.BindingSource VerifBinding;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numTriathlonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn INSCRIPTION;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numDossard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeProduit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prelevement;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRODUIT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }
