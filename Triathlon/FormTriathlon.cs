@@ -37,7 +37,6 @@ namespace Triathlon
 
         private void dataGridTriathlon_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            TRIATHLON leTriathlon = (TRIATHLON)TriathlonBinding.Current;
             tabControlTriathlon.SelectedIndex = 1;
         }
 
