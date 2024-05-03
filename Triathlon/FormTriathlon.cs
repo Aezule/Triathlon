@@ -53,7 +53,7 @@ namespace Triathlon
                 {
                     TriathlonBinding.EndEdit();
                     context.SaveChanges();
-                    MessageBox.Show("Modification reussite!", "confirmation", MessageBoxButtons.OK);
+                    MessageBox.Show("Modification réussie !", "confirmation", MessageBoxButtons.OK);
                 }
                 catch
                 {
