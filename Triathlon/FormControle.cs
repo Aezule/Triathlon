@@ -17,13 +17,12 @@ namespace Triathlon
         {
             InitializeComponent();
         }
-        TriathlonEntities context;
+        TriathlonEntities context = new TriathlonEntities();
 
         private void FormControle_Load(object sender, EventArgs e)
         {
             try
             {
-                context = new TriathlonEntities();
                 context.VERIFIERs.Load();
                 VerifBinding.DataSource = context.VERIFIERs.Local.ToBindingList();
 
@@ -68,11 +67,28 @@ namespace Triathlon
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Etes-vous sur de vouloir supprimer le controle ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            { 
+            VERIFIER leCT = (VERIFIER)VerifBinding.Current;
 
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Etes-vous sur de vouloir supprimer le controle ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    context.VERIFIERs.Remove(leCT);
+                    context.SaveChanges();
+                    tabControleDopage.SelectedIndex = 0;
+                }
             }
+            catch(Exception ex) 
+            {
+                context.Entry(leCT).State = EntityState.Unchanged;
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAjoutCT_Click(object sender, EventArgs e)
+        {
+            VerifBinding.AddNew();
         }
     }
 }

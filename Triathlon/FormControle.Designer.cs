@@ -51,6 +51,7 @@
             this.lblPrélèvement = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAjoutCT = new System.Windows.Forms.Button();
             this.tabControleDopage.SuspendLayout();
             this.tabPageAffDopage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDopage)).BeginInit();
@@ -65,7 +66,7 @@
             this.tabControleDopage.Location = new System.Drawing.Point(12, 12);
             this.tabControleDopage.Name = "tabControleDopage";
             this.tabControleDopage.SelectedIndex = 0;
-            this.tabControleDopage.Size = new System.Drawing.Size(776, 426);
+            this.tabControleDopage.Size = new System.Drawing.Size(776, 388);
             this.tabControleDopage.TabIndex = 0;
             this.tabControleDopage.SelectedIndexChanged += new System.EventHandler(this.tabControleDopage_SelectedIndexChanged);
             // 
@@ -75,7 +76,7 @@
             this.tabPageAffDopage.Location = new System.Drawing.Point(4, 25);
             this.tabPageAffDopage.Name = "tabPageAffDopage";
             this.tabPageAffDopage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAffDopage.Size = new System.Drawing.Size(768, 397);
+            this.tabPageAffDopage.Size = new System.Drawing.Size(768, 359);
             this.tabPageAffDopage.TabIndex = 0;
             this.tabPageAffDopage.Text = "Affichage Contrôle";
             this.tabPageAffDopage.UseVisualStyleBackColor = true;
@@ -280,11 +281,23 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.Width = 125;
             // 
+            // btnAjoutCT
+            // 
+            this.btnAjoutCT.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnAjoutCT.Location = new System.Drawing.Point(249, 407);
+            this.btnAjoutCT.Name = "btnAjoutCT";
+            this.btnAjoutCT.Size = new System.Drawing.Size(295, 31);
+            this.btnAjoutCT.TabIndex = 1;
+            this.btnAjoutCT.Text = "Ajouter un nouveau Controle";
+            this.btnAjoutCT.UseVisualStyleBackColor = false;
+            this.btnAjoutCT.Click += new System.EventHandler(this.btnAjoutCT_Click);
+            // 
             // FormControle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAjoutCT);
             this.Controls.Add(this.tabControleDopage);
             this.Name = "FormControle";
             this.Text = "Contrôle Anti-Dopage";
@@ -323,5 +336,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numDossard;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeProduit;
         private System.Windows.Forms.DataGridViewTextBoxColumn prelevement;
+        private System.Windows.Forms.Button btnAjoutCT;
     }
 }
