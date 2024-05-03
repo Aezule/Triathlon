@@ -290,7 +290,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(120, 71);
+            this.lblTotal.Location = new System.Drawing.Point(120, 74);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(84, 16);
             this.lblTotal.TabIndex = 7;
@@ -317,7 +317,7 @@
             // lblNat
             // 
             this.lblNat.AutoSize = true;
-            this.lblNat.Location = new System.Drawing.Point(104, 118);
+            this.lblNat.Location = new System.Drawing.Point(98, 121);
             this.lblNat.Name = "lblNat";
             this.lblNat.Size = new System.Drawing.Size(106, 16);
             this.lblNat.TabIndex = 4;
@@ -342,7 +342,7 @@
             // txtBoxNat
             // 
             this.txtBoxNat.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.TempsBinding, "tempsNatation", true));
-            this.txtBoxNat.Location = new System.Drawing.Point(210, 115);
+            this.txtBoxNat.Location = new System.Drawing.Point(210, 121);
             this.txtBoxNat.Name = "txtBoxNat";
             this.txtBoxNat.Size = new System.Drawing.Size(100, 22);
             this.txtBoxNat.TabIndex = 1;
@@ -391,7 +391,6 @@
         private System.Windows.Forms.TextBox txtBoxTotal;
         private System.Windows.Forms.Label lblCourse;
         private System.Windows.Forms.Label lblCycl;
-        private System.Windows.Forms.Label lblNat;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnSupp;
         private System.Windows.Forms.Button btnAnnuler;
@@ -408,5 +407,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroTriathleteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tRIATHLETEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tRIATHLONDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lblNat;
     }
 }

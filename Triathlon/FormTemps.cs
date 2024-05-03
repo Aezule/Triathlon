@@ -56,7 +56,6 @@ namespace Triathlon
         private void TriathleteBinding_CurrentChanged(object sender, EventArgs e)
         {
             LoadTemps();
-
         }
 
         private void tabControlTemps_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,6 +63,11 @@ namespace Triathlon
             if (tabControlTemps.SelectedIndex == 0)
             {
                 TempsBinding.CancelEdit();
+            }
+            else
+            {
+                INSCRIPTION unInscription = (INSCRIPTION)TempsBinding.Current;
+                txtBoxTotal.Text = (unInscription.tempsCourseCyscliste + unInscription.tempsCourse + unInscription.tempsNatation).ToString();
             }
         }
     }   
