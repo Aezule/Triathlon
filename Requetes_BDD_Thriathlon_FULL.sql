@@ -317,5 +317,197 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON TRIATHLON TO UserTriathlon;
 GRANT SELECT, INSERT, UPDATE, DELETE ON TYPE_TRIATHLON TO UserTriathlon;
 GRANT SELECT, INSERT, UPDATE, DELETE ON VERIFIER TO UserTriathlon;
 
+/* Triggers */
+
+    /* Identificatuion relative des inscriptions */
+
+    /* Affectation automatique du triathèle à sa catégorie en fonction de son âge */
+
+
+/*Inscriptions relatives*/
+CREATE OR ALTER TRIGGER TI_AddInscription ON INSCRIPTION
+INSTEAD OF INSERT
+AS
+BEGIN
+	if(not exists(Select * from INSCRIPTION Where numTriathlon = (select numTriathlon from inserted)))
+	begin
+      throw 50001, 'Le traithlon n''existe pas', 0
+	
+	  rollback transaction
+	end
+
+	if((Select COUNT((numeroTriathlete)) FROM INSCRIPTION WHERE numTriathlon = (select numTriathlon from inserted)) = 0)
+	
+		INSERT INTO INSCRIPTION(numTriathlon, numDossard, dateInscription, tempsCourseCyscliste, tempsCourse, tempsNatation, numeroTriathlete)
+      VALUES 
+      ((select numTriathlon from inserted), '001', (select dateInscription from inserted), 0.0, 0.0, 0.0, (select numeroTriathlete from inserted));
+	  
+	
+	else
+	
+
+      /*Script CONCATENATION*/
+
+      declare @lastNumDossard varchar(50) = (Select MAX(numDossard) from INSCRIPTION Where numTriathlon = (select numTriathlon from inserted));
+
+      declare @newNumDossard int = (CONVERT(int,@lastNumDossard) + 1)
+
+    
+      if(@newNumDossard >= 1000)
+      begin
+         throw 50001, 'Nombre maximum de triathlètes atteint',0;
+
+         rollback transaction;
+      end
+      if(@newNumDossard < 10)
+      begin
+         
+
+         INSERT INTO INSCRIPTION(numTriathlon, numDossard, dateInscription, tempsCourseCyscliste, tempsCourse, tempsNatation, numeroTriathlete)
+            VALUES 
+            ((select numTriathlon from inserted), CONCAT('0','0',@newNumDossard), (select dateInscription from inserted), 0.0, 0.0, 0.0, (select numeroTriathlete from inserted));
+      end
+      if(@newNumDossard >= 10 AND @newNumDossard < 100)
+      begin
+         
+
+         INSERT INTO INSCRIPTION(numTriathlon, numDossard, dateInscription, tempsCourseCyscliste, tempsCourse, tempsNatation, numeroTriathlete)
+            VALUES 
+            ((select numTriathlon from inserted), CONCAT('0',@newNumDossard), (select dateInscription from inserted), 0.0, 0.0, 0.0, (select numeroTriathlete from inserted));
+      end
+      if(@newNumDossard >= 100)
+      begin
+         
+
+         INSERT INTO INSCRIPTION(numTriathlon, numDossard, dateInscription, tempsCourseCyscliste, tempsCourse, tempsNatation, numeroTriathlete)
+            VALUES 
+            ((select numTriathlon from inserted), @newNumDossard, (select dateInscription from inserted), 0.0, 0.0, 0.0, (select numeroTriathlete from inserted));
+      end
+END
+
+
+
+/*Ajout catégories auto*/
+
+CREATE OR ALTER TRIGGER TI_AddTriathlete ON TRIATHLETE
+INSTEAD OF INSERT
+AS
+BEGIN
+
+   declare @age int = (select DATEDIFF(YEAR, dateNaissance,GETDATE()) from inserted);
+
+   if(@age < 10)
+   begin
+      throw 50001, 'Age non valide, doit être supérieur ou égal à 10',0;
+
+      rollback transaction;
+   end
+
+   if(@age >= 10 AND @age <= 12)
+   
+      INSERT INTO TRIATHLETE VALUES 
+         ((select numeroTriathlete from inserted), (select nom from inserted), (select prenom from inserted), (select dateNaissance from inserted), (select pays from inserted), (select ville from inserted), (select numLicence from inserted), (select dateObtention from inserted), (select codePostal from inserted), '0001');
+   
+   if(@age >= 13 AND @age <= 14)
+   
+      INSERT INTO TRIATHLETE VALUES 
+         ((select numeroTriathlete from inserted), (select nom from inserted), (select prenom from inserted), (select dateNaissance from inserted), (select pays from inserted), (select ville from inserted), (select numLicence from inserted), (select dateObtention from inserted), (select codePostal from inserted), '0002');
+   
+   if(@age >= 15 AND @age <= 16)
+   
+      INSERT INTO TRIATHLETE VALUES 
+         ((select numeroTriathlete from inserted), (select nom from inserted), (select prenom from inserted), (select dateNaissance from inserted), (select pays from inserted), (select ville from inserted), (select numLicence from inserted), (select dateObtention from inserted), (select codePostal from inserted), '0003');
+   
+   if(@age >= 16 AND @age <= 18)
+   
+      INSERT INTO TRIATHLETE VALUES 
+         ((select numeroTriathlete from inserted), (select nom from inserted), (select prenom from inserted), (select dateNaissance from inserted), (select pays from inserted), (select ville from inserted), (select numLicence from inserted), (select dateObtention from inserted), (select codePostal from inserted), '0004');
+   
+   if(@age >= 19 AND @age <= 39)
+   
+      INSERT INTO TRIATHLETE VALUES 
+         ((select numeroTriathlete from inserted), (select nom from inserted), (select prenom from inserted), (select dateNaissance from inserted), (select pays from inserted), (select ville from inserted), (select numLicence from inserted), (select dateObtention from inserted), (select codePostal from inserted), '0005');
+   
+   if(@age >= 40)
+   
+      INSERT INTO TRIATHLETE VALUES 
+         ((select numeroTriathlete from inserted), (select nom from inserted), (select prenom from inserted), (select dateNaissance from inserted), (select pays from inserted), (select ville from inserted), (select numLicence from inserted), (select dateObtention from inserted), (select codePostal from inserted), '0006');
+   
+
+
+END
+
+
+/*Test insertion inscription*/
+
+begin transaction
+
+   SELECT * FROM INSCRIPTION WHERE numTriathlon = 'TRI2'
+
+   INSERT INTO INSCRIPTION(numTriathlon, numDossard, dateInscription, tempsCourseCyscliste, tempsCourse, tempsNatation, numeroTriathlete)
+         VALUES 
+         ('TRI2', '' , GETDATE() , 0.0, 0.0, 0.0, 'T10');
+
+   SELECT * FROM INSCRIPTION WHERE numTriathlon = 'TRI2'
+
+rollback
+
+/*Test Insertion triathlete*/
+
+begin transaction
+
+   SELECT * from AGE
+
+   INSERT INTO TRIATHLETE VALUES 
+   ('T11', 'Devilliers', 'Enzo', '1980-04-26', 'France', 'Longjumeaux', 'L001', '2022-03-15', '91000', '');
+
+   SELECT * from TRIATHLETE
+
+rollback
+
+/*List all triggers*/
+
+SELECT 
+     sysobjects.name AS trigger_name 
+    ,USER_NAME(sysobjects.uid) AS trigger_owner 
+    ,s.name AS table_schema 
+    ,OBJECT_NAME(parent_obj) AS table_name 
+    ,OBJECTPROPERTY( id, 'ExecIsUpdateTrigger') AS isupdate 
+    ,OBJECTPROPERTY( id, 'ExecIsDeleteTrigger') AS isdelete 
+    ,OBJECTPROPERTY( id, 'ExecIsInsertTrigger') AS isinsert 
+    ,OBJECTPROPERTY( id, 'ExecIsAfterTrigger') AS isafter 
+    ,OBJECTPROPERTY( id, 'ExecIsInsteadOfTrigger') AS isinsteadof 
+    ,OBJECTPROPERTY(id, 'ExecIsTriggerDisabled') AS [disabled] 
+FROM sysobjects 
+
+INNER JOIN sysusers 
+    ON sysobjects.uid = sysusers.uid 
+
+INNER JOIN sys.tables t 
+    ON sysobjects.parent_obj = t.object_id 
+
+INNER JOIN sys.schemas s 
+    ON t.schema_id = s.schema_id 
+
+WHERE sysobjects.type = 'TR' 
+
+
+
+/* Procédures Stockés */
+
+    /* Obtenir le classement pour un trathlon donnée */
+
+CREATE OR ALTER PROCEDURE GetClassement
+@CodeTri varchar(4)
+AS
+BEGIN
+   SELECT numTriathlon, numeroTriathlete, tempsCourseCyscliste, tempsCourse, tempsNatation , (tempsCourseCyscliste + tempsNatation + tempsCourse) AS temps_total
+   FROM INSCRIPTION
+   WHERE numTriathlon = @CodeTri
+   ORDER BY temps_total
+END
+
+exec GetClassement 'TRI1';
+exec GetClassement 'TRI2';
 
 

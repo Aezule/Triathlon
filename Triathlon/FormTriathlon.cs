@@ -28,7 +28,6 @@ namespace Triathlon
 
                 context = new TriathlonEntities();
                 context.TRIATHLONs.Load();
-           
                 TriathlonBinding.DataSource = context.TRIATHLONs.Local.ToBindingList();
     
             }
@@ -37,7 +36,6 @@ namespace Triathlon
 
         private void dataGridTriathlon_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            TRIATHLON leTriathlon = (TRIATHLON)TriathlonBinding.Current;
             tabControlTriathlon.SelectedIndex = 1;
         }
 
@@ -81,5 +79,6 @@ namespace Triathlon
            
         }
 
+     
     }
 }
