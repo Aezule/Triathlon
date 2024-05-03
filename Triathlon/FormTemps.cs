@@ -38,9 +38,9 @@ namespace Triathlon
 
         private void FormTemps_Load(object sender, EventArgs e)
         {
+ 
             try
             {
-
                 context = new TriathlonEntities();
                 context.TRIATHLETEs.Load();
                 context.INSCRIPTIONs.Load();
@@ -50,10 +50,21 @@ namespace Triathlon
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+    
+
+        private void TriathleteBinding_CurrentChanged(object sender, EventArgs e)
         {
             LoadTemps();
-            LoadTemps();
+
+        }
+
+        private void tabControlTemps_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControlTemps.SelectedIndex == 0)
+            {
+                TempsBinding.CancelEdit();
+            }
         }
     }   
 }

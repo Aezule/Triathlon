@@ -28,7 +28,6 @@ namespace Triathlon
 
                 context = new TriathlonEntities();
                 context.TRIATHLONs.Load();
-           
                 TriathlonBinding.DataSource = context.TRIATHLONs.Local.ToBindingList();
     
             }
@@ -80,5 +79,6 @@ namespace Triathlon
            
         }
 
+     
     }
 }

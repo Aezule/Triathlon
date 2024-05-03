@@ -45,19 +45,18 @@
             this.tempsNatationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroTriathleteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tRIATHLETEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vERIFIERsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tRIATHLONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TempsBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDetails = new System.Windows.Forms.TabPage();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnConfirmer = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCourse = new System.Windows.Forms.Label();
+            this.lblCycl = new System.Windows.Forms.Label();
             this.lblNat = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.txtBox = new System.Windows.Forms.TextBox();
+            this.txtBoxCourse = new System.Windows.Forms.TextBox();
+            this.txtBoxCycl = new System.Windows.Forms.TextBox();
+            this.txtBoxNat = new System.Windows.Forms.TextBox();
             this.txtBoxTotal = new System.Windows.Forms.TextBox();
             this.tabControlTemps.SuspendLayout();
             this.tabPageAffTemps.SuspendLayout();
@@ -76,6 +75,7 @@
             this.tabControlTemps.SelectedIndex = 0;
             this.tabControlTemps.Size = new System.Drawing.Size(776, 426);
             this.tabControlTemps.TabIndex = 2;
+            this.tabControlTemps.SelectedIndexChanged += new System.EventHandler(this.tabControlTemps_SelectedIndexChanged);
             // 
             // tabPageAffTemps
             // 
@@ -129,11 +129,11 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(252, 24);
             this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // TriathleteBinding
             // 
             this.TriathleteBinding.DataSource = typeof(Triathlon.TRIATHLETE);
+            this.TriathleteBinding.CurrentChanged += new System.EventHandler(this.TriathleteBinding_CurrentChanged);
             // 
             // TempsDataGrid
             // 
@@ -150,13 +150,15 @@
             this.tempsNatationDataGridViewTextBoxColumn,
             this.numeroTriathleteDataGridViewTextBoxColumn,
             this.tRIATHLETEDataGridViewTextBoxColumn,
-            this.vERIFIERsDataGridViewTextBoxColumn,
             this.tRIATHLONDataGridViewTextBoxColumn});
             this.TempsDataGrid.DataSource = this.TempsBinding;
             this.TempsDataGrid.Location = new System.Drawing.Point(7, 76);
+            this.TempsDataGrid.MultiSelect = false;
             this.TempsDataGrid.Name = "TempsDataGrid";
+            this.TempsDataGrid.ReadOnly = true;
             this.TempsDataGrid.RowHeadersWidth = 51;
             this.TempsDataGrid.RowTemplate.Height = 24;
+            this.TempsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TempsDataGrid.Size = new System.Drawing.Size(758, 268);
             this.TempsDataGrid.TabIndex = 0;
             // 
@@ -166,6 +168,7 @@
             this.numTriathlonDataGridViewTextBoxColumn.HeaderText = "numTriathlon";
             this.numTriathlonDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.numTriathlonDataGridViewTextBoxColumn.Name = "numTriathlonDataGridViewTextBoxColumn";
+            this.numTriathlonDataGridViewTextBoxColumn.ReadOnly = true;
             this.numTriathlonDataGridViewTextBoxColumn.Width = 125;
             // 
             // numDossardDataGridViewTextBoxColumn
@@ -174,6 +177,7 @@
             this.numDossardDataGridViewTextBoxColumn.HeaderText = "numDossard";
             this.numDossardDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.numDossardDataGridViewTextBoxColumn.Name = "numDossardDataGridViewTextBoxColumn";
+            this.numDossardDataGridViewTextBoxColumn.ReadOnly = true;
             this.numDossardDataGridViewTextBoxColumn.Width = 125;
             // 
             // dateInscriptionDataGridViewTextBoxColumn
@@ -182,6 +186,7 @@
             this.dateInscriptionDataGridViewTextBoxColumn.HeaderText = "dateInscription";
             this.dateInscriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dateInscriptionDataGridViewTextBoxColumn.Name = "dateInscriptionDataGridViewTextBoxColumn";
+            this.dateInscriptionDataGridViewTextBoxColumn.ReadOnly = true;
             this.dateInscriptionDataGridViewTextBoxColumn.Width = 125;
             // 
             // tempsCourseCysclisteDataGridViewTextBoxColumn
@@ -190,6 +195,7 @@
             this.tempsCourseCysclisteDataGridViewTextBoxColumn.HeaderText = "tempsCourseCyscliste";
             this.tempsCourseCysclisteDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tempsCourseCysclisteDataGridViewTextBoxColumn.Name = "tempsCourseCysclisteDataGridViewTextBoxColumn";
+            this.tempsCourseCysclisteDataGridViewTextBoxColumn.ReadOnly = true;
             this.tempsCourseCysclisteDataGridViewTextBoxColumn.Width = 125;
             // 
             // tempsCourseDataGridViewTextBoxColumn
@@ -198,6 +204,7 @@
             this.tempsCourseDataGridViewTextBoxColumn.HeaderText = "tempsCourse";
             this.tempsCourseDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tempsCourseDataGridViewTextBoxColumn.Name = "tempsCourseDataGridViewTextBoxColumn";
+            this.tempsCourseDataGridViewTextBoxColumn.ReadOnly = true;
             this.tempsCourseDataGridViewTextBoxColumn.Width = 125;
             // 
             // tempsNatationDataGridViewTextBoxColumn
@@ -206,6 +213,7 @@
             this.tempsNatationDataGridViewTextBoxColumn.HeaderText = "tempsNatation";
             this.tempsNatationDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tempsNatationDataGridViewTextBoxColumn.Name = "tempsNatationDataGridViewTextBoxColumn";
+            this.tempsNatationDataGridViewTextBoxColumn.ReadOnly = true;
             this.tempsNatationDataGridViewTextBoxColumn.Width = 125;
             // 
             // numeroTriathleteDataGridViewTextBoxColumn
@@ -214,6 +222,7 @@
             this.numeroTriathleteDataGridViewTextBoxColumn.HeaderText = "numeroTriathlete";
             this.numeroTriathleteDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.numeroTriathleteDataGridViewTextBoxColumn.Name = "numeroTriathleteDataGridViewTextBoxColumn";
+            this.numeroTriathleteDataGridViewTextBoxColumn.ReadOnly = true;
             this.numeroTriathleteDataGridViewTextBoxColumn.Width = 125;
             // 
             // tRIATHLETEDataGridViewTextBoxColumn
@@ -222,15 +231,8 @@
             this.tRIATHLETEDataGridViewTextBoxColumn.HeaderText = "TRIATHLETE";
             this.tRIATHLETEDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tRIATHLETEDataGridViewTextBoxColumn.Name = "tRIATHLETEDataGridViewTextBoxColumn";
+            this.tRIATHLETEDataGridViewTextBoxColumn.ReadOnly = true;
             this.tRIATHLETEDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // vERIFIERsDataGridViewTextBoxColumn
-            // 
-            this.vERIFIERsDataGridViewTextBoxColumn.DataPropertyName = "VERIFIERs";
-            this.vERIFIERsDataGridViewTextBoxColumn.HeaderText = "VERIFIERs";
-            this.vERIFIERsDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.vERIFIERsDataGridViewTextBoxColumn.Name = "vERIFIERsDataGridViewTextBoxColumn";
-            this.vERIFIERsDataGridViewTextBoxColumn.Width = 125;
             // 
             // tRIATHLONDataGridViewTextBoxColumn
             // 
@@ -238,6 +240,7 @@
             this.tRIATHLONDataGridViewTextBoxColumn.HeaderText = "TRIATHLON";
             this.tRIATHLONDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tRIATHLONDataGridViewTextBoxColumn.Name = "tRIATHLONDataGridViewTextBoxColumn";
+            this.tRIATHLONDataGridViewTextBoxColumn.ReadOnly = true;
             this.tRIATHLONDataGridViewTextBoxColumn.Width = 125;
             // 
             // TempsBinding
@@ -249,12 +252,12 @@
             this.tabPageDetails.Controls.Add(this.btnAnnuler);
             this.tabPageDetails.Controls.Add(this.btnConfirmer);
             this.tabPageDetails.Controls.Add(this.lblTotal);
-            this.tabPageDetails.Controls.Add(this.label3);
-            this.tabPageDetails.Controls.Add(this.label2);
+            this.tabPageDetails.Controls.Add(this.lblCourse);
+            this.tabPageDetails.Controls.Add(this.lblCycl);
             this.tabPageDetails.Controls.Add(this.lblNat);
-            this.tabPageDetails.Controls.Add(this.textBox4);
-            this.tabPageDetails.Controls.Add(this.textBox3);
-            this.tabPageDetails.Controls.Add(this.txtBox);
+            this.tabPageDetails.Controls.Add(this.txtBoxCourse);
+            this.tabPageDetails.Controls.Add(this.txtBoxCycl);
+            this.tabPageDetails.Controls.Add(this.txtBoxNat);
             this.tabPageDetails.Controls.Add(this.txtBoxTotal);
             this.tabPageDetails.Location = new System.Drawing.Point(4, 25);
             this.tabPageDetails.Name = "tabPageDetails";
@@ -293,23 +296,23 @@
             this.lblTotal.TabIndex = 7;
             this.lblTotal.Text = "Temps total :";
             // 
-            // label3
+            // lblCourse
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(104, 173);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Temps course :";
+            this.lblCourse.AutoSize = true;
+            this.lblCourse.Location = new System.Drawing.Point(104, 173);
+            this.lblCourse.Name = "lblCourse";
+            this.lblCourse.Size = new System.Drawing.Size(100, 16);
+            this.lblCourse.TabIndex = 6;
+            this.lblCourse.Text = "Temps course :";
             // 
-            // label2
+            // lblCycl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 147);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Temps course cycliste :";
+            this.lblCycl.AutoSize = true;
+            this.lblCycl.Location = new System.Drawing.Point(56, 147);
+            this.lblCycl.Name = "lblCycl";
+            this.lblCycl.Size = new System.Drawing.Size(148, 16);
+            this.lblCycl.TabIndex = 5;
+            this.lblCycl.Text = "Temps course cycliste :";
             // 
             // lblNat
             // 
@@ -320,39 +323,43 @@
             this.lblNat.TabIndex = 4;
             this.lblNat.Text = "Temps natation :";
             // 
-            // textBox4
+            // txtBoxCourse
             // 
-            this.textBox4.Location = new System.Drawing.Point(210, 170);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(186, 22);
-            this.textBox4.TabIndex = 3;
+            this.txtBoxCourse.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.TempsBinding, "tempsCourse", true));
+            this.txtBoxCourse.Location = new System.Drawing.Point(210, 170);
+            this.txtBoxCourse.Name = "txtBoxCourse";
+            this.txtBoxCourse.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxCourse.TabIndex = 3;
             // 
-            // textBox3
+            // txtBoxCycl
             // 
-            this.textBox3.Location = new System.Drawing.Point(210, 145);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 22);
-            this.textBox3.TabIndex = 2;
+            this.txtBoxCycl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.TempsBinding, "tempsCourseCyscliste", true));
+            this.txtBoxCycl.Location = new System.Drawing.Point(210, 145);
+            this.txtBoxCycl.Name = "txtBoxCycl";
+            this.txtBoxCycl.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxCycl.TabIndex = 2;
             // 
-            // txtBox
+            // txtBoxNat
             // 
-            this.txtBox.Location = new System.Drawing.Point(210, 115);
-            this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(186, 22);
-            this.txtBox.TabIndex = 1;
+            this.txtBoxNat.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.TempsBinding, "tempsNatation", true));
+            this.txtBoxNat.Location = new System.Drawing.Point(210, 115);
+            this.txtBoxNat.Name = "txtBoxNat";
+            this.txtBoxNat.Size = new System.Drawing.Size(100, 22);
+            this.txtBoxNat.TabIndex = 1;
             // 
             // txtBoxTotal
             // 
             this.txtBoxTotal.Location = new System.Drawing.Point(210, 68);
             this.txtBoxTotal.Name = "txtBoxTotal";
             this.txtBoxTotal.ReadOnly = true;
-            this.txtBoxTotal.Size = new System.Drawing.Size(186, 22);
+            this.txtBoxTotal.Size = new System.Drawing.Size(100, 22);
             this.txtBoxTotal.TabIndex = 0;
             // 
             // FormTemps
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControlTemps);
             this.Name = "FormTemps";
@@ -378,12 +385,12 @@
         private System.Windows.Forms.Label lblTriatlhète;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView TempsDataGrid;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox txtBox;
+        private System.Windows.Forms.TextBox txtBoxCourse;
+        private System.Windows.Forms.TextBox txtBoxCycl;
+        private System.Windows.Forms.TextBox txtBoxNat;
         private System.Windows.Forms.TextBox txtBoxTotal;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCourse;
+        private System.Windows.Forms.Label lblCycl;
         private System.Windows.Forms.Label lblNat;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnSupp;
@@ -400,7 +407,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tempsNatationDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroTriathleteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tRIATHLETEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vERIFIERsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tRIATHLONDataGridViewTextBoxColumn;
     }
 }
