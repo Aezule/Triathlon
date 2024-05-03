@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tabControlTemps = new System.Windows.Forms.TabControl();
             this.tabPageAffTemps = new System.Windows.Forms.TabPage();
-            this.btnAjouter = new System.Windows.Forms.Button();
             this.btnSupp = new System.Windows.Forms.Button();
             this.lblTriatlhète = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -39,12 +38,9 @@
             this.TempsDataGrid = new System.Windows.Forms.DataGridView();
             this.numTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numDossardDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateInscriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tempsCourseCysclisteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tempsCourseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tempsNatationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroTriathleteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tRIATHLETEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tRIATHLONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TempsBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDetails = new System.Windows.Forms.TabPage();
@@ -79,7 +75,6 @@
             // 
             // tabPageAffTemps
             // 
-            this.tabPageAffTemps.Controls.Add(this.btnAjouter);
             this.tabPageAffTemps.Controls.Add(this.btnSupp);
             this.tabPageAffTemps.Controls.Add(this.lblTriatlhète);
             this.tabPageAffTemps.Controls.Add(this.comboBox1);
@@ -92,25 +87,16 @@
             this.tabPageAffTemps.Text = "Affichage Temps";
             this.tabPageAffTemps.UseVisualStyleBackColor = true;
             // 
-            // btnAjouter
-            // 
-            this.btnAjouter.BackColor = System.Drawing.Color.GreenYellow;
-            this.btnAjouter.Location = new System.Drawing.Point(62, 351);
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(274, 40);
-            this.btnAjouter.TabIndex = 4;
-            this.btnAjouter.Text = "Ajouter un temps";
-            this.btnAjouter.UseVisualStyleBackColor = false;
-            // 
             // btnSupp
             // 
             this.btnSupp.BackColor = System.Drawing.Color.IndianRed;
-            this.btnSupp.Location = new System.Drawing.Point(367, 350);
+            this.btnSupp.Location = new System.Drawing.Point(223, 350);
             this.btnSupp.Name = "btnSupp";
             this.btnSupp.Size = new System.Drawing.Size(274, 40);
             this.btnSupp.TabIndex = 3;
             this.btnSupp.Text = "Supprimer";
             this.btnSupp.UseVisualStyleBackColor = false;
+            this.btnSupp.Click += new System.EventHandler(this.btnSupp_Click);
             // 
             // lblTriatlhète
             // 
@@ -144,12 +130,9 @@
             this.TempsDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numTriathlonDataGridViewTextBoxColumn,
             this.numDossardDataGridViewTextBoxColumn,
-            this.dateInscriptionDataGridViewTextBoxColumn,
             this.tempsCourseCysclisteDataGridViewTextBoxColumn,
             this.tempsCourseDataGridViewTextBoxColumn,
             this.tempsNatationDataGridViewTextBoxColumn,
-            this.numeroTriathleteDataGridViewTextBoxColumn,
-            this.tRIATHLETEDataGridViewTextBoxColumn,
             this.tRIATHLONDataGridViewTextBoxColumn});
             this.TempsDataGrid.DataSource = this.TempsBinding;
             this.TempsDataGrid.Location = new System.Drawing.Point(7, 76);
@@ -180,15 +163,6 @@
             this.numDossardDataGridViewTextBoxColumn.ReadOnly = true;
             this.numDossardDataGridViewTextBoxColumn.Width = 125;
             // 
-            // dateInscriptionDataGridViewTextBoxColumn
-            // 
-            this.dateInscriptionDataGridViewTextBoxColumn.DataPropertyName = "dateInscription";
-            this.dateInscriptionDataGridViewTextBoxColumn.HeaderText = "dateInscription";
-            this.dateInscriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.dateInscriptionDataGridViewTextBoxColumn.Name = "dateInscriptionDataGridViewTextBoxColumn";
-            this.dateInscriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateInscriptionDataGridViewTextBoxColumn.Width = 125;
-            // 
             // tempsCourseCysclisteDataGridViewTextBoxColumn
             // 
             this.tempsCourseCysclisteDataGridViewTextBoxColumn.DataPropertyName = "tempsCourseCyscliste";
@@ -216,28 +190,10 @@
             this.tempsNatationDataGridViewTextBoxColumn.ReadOnly = true;
             this.tempsNatationDataGridViewTextBoxColumn.Width = 125;
             // 
-            // numeroTriathleteDataGridViewTextBoxColumn
-            // 
-            this.numeroTriathleteDataGridViewTextBoxColumn.DataPropertyName = "numeroTriathlete";
-            this.numeroTriathleteDataGridViewTextBoxColumn.HeaderText = "numeroTriathlete";
-            this.numeroTriathleteDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numeroTriathleteDataGridViewTextBoxColumn.Name = "numeroTriathleteDataGridViewTextBoxColumn";
-            this.numeroTriathleteDataGridViewTextBoxColumn.ReadOnly = true;
-            this.numeroTriathleteDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // tRIATHLETEDataGridViewTextBoxColumn
-            // 
-            this.tRIATHLETEDataGridViewTextBoxColumn.DataPropertyName = "TRIATHLETE";
-            this.tRIATHLETEDataGridViewTextBoxColumn.HeaderText = "TRIATHLETE";
-            this.tRIATHLETEDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tRIATHLETEDataGridViewTextBoxColumn.Name = "tRIATHLETEDataGridViewTextBoxColumn";
-            this.tRIATHLETEDataGridViewTextBoxColumn.ReadOnly = true;
-            this.tRIATHLETEDataGridViewTextBoxColumn.Width = 125;
-            // 
             // tRIATHLONDataGridViewTextBoxColumn
             // 
             this.tRIATHLONDataGridViewTextBoxColumn.DataPropertyName = "TRIATHLON";
-            this.tRIATHLONDataGridViewTextBoxColumn.HeaderText = "TRIATHLON";
+            this.tRIATHLONDataGridViewTextBoxColumn.HeaderText = "triathlon";
             this.tRIATHLONDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tRIATHLONDataGridViewTextBoxColumn.Name = "tRIATHLONDataGridViewTextBoxColumn";
             this.tRIATHLONDataGridViewTextBoxColumn.ReadOnly = true;
@@ -279,18 +235,19 @@
             // 
             // btnConfirmer
             // 
-            this.btnConfirmer.BackColor = System.Drawing.Color.OliveDrab;
+            this.btnConfirmer.BackColor = System.Drawing.Color.YellowGreen;
             this.btnConfirmer.Location = new System.Drawing.Point(107, 295);
             this.btnConfirmer.Name = "btnConfirmer";
             this.btnConfirmer.Size = new System.Drawing.Size(203, 42);
             this.btnConfirmer.TabIndex = 8;
-            this.btnConfirmer.Text = "Ajouter";
+            this.btnConfirmer.Text = "Modifier";
             this.btnConfirmer.UseVisualStyleBackColor = false;
+            this.btnConfirmer.Click += new System.EventHandler(this.btnConfirmer_Click);
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(120, 74);
+            this.lblTotal.Location = new System.Drawing.Point(120, 115);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(84, 16);
             this.lblTotal.TabIndex = 7;
@@ -299,7 +256,7 @@
             // lblCourse
             // 
             this.lblCourse.AutoSize = true;
-            this.lblCourse.Location = new System.Drawing.Point(104, 173);
+            this.lblCourse.Location = new System.Drawing.Point(104, 214);
             this.lblCourse.Name = "lblCourse";
             this.lblCourse.Size = new System.Drawing.Size(100, 16);
             this.lblCourse.TabIndex = 6;
@@ -308,7 +265,7 @@
             // lblCycl
             // 
             this.lblCycl.AutoSize = true;
-            this.lblCycl.Location = new System.Drawing.Point(56, 147);
+            this.lblCycl.Location = new System.Drawing.Point(56, 188);
             this.lblCycl.Name = "lblCycl";
             this.lblCycl.Size = new System.Drawing.Size(148, 16);
             this.lblCycl.TabIndex = 5;
@@ -317,7 +274,7 @@
             // lblNat
             // 
             this.lblNat.AutoSize = true;
-            this.lblNat.Location = new System.Drawing.Point(98, 121);
+            this.lblNat.Location = new System.Drawing.Point(98, 162);
             this.lblNat.Name = "lblNat";
             this.lblNat.Size = new System.Drawing.Size(106, 16);
             this.lblNat.TabIndex = 4;
@@ -326,7 +283,7 @@
             // txtBoxCourse
             // 
             this.txtBoxCourse.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.TempsBinding, "tempsCourse", true));
-            this.txtBoxCourse.Location = new System.Drawing.Point(210, 170);
+            this.txtBoxCourse.Location = new System.Drawing.Point(210, 211);
             this.txtBoxCourse.Name = "txtBoxCourse";
             this.txtBoxCourse.Size = new System.Drawing.Size(100, 22);
             this.txtBoxCourse.TabIndex = 3;
@@ -334,7 +291,7 @@
             // txtBoxCycl
             // 
             this.txtBoxCycl.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.TempsBinding, "tempsCourseCyscliste", true));
-            this.txtBoxCycl.Location = new System.Drawing.Point(210, 145);
+            this.txtBoxCycl.Location = new System.Drawing.Point(210, 186);
             this.txtBoxCycl.Name = "txtBoxCycl";
             this.txtBoxCycl.Size = new System.Drawing.Size(100, 22);
             this.txtBoxCycl.TabIndex = 2;
@@ -342,14 +299,14 @@
             // txtBoxNat
             // 
             this.txtBoxNat.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.TempsBinding, "tempsNatation", true));
-            this.txtBoxNat.Location = new System.Drawing.Point(210, 121);
+            this.txtBoxNat.Location = new System.Drawing.Point(210, 162);
             this.txtBoxNat.Name = "txtBoxNat";
             this.txtBoxNat.Size = new System.Drawing.Size(100, 22);
             this.txtBoxNat.TabIndex = 1;
             // 
             // txtBoxTotal
             // 
-            this.txtBoxTotal.Location = new System.Drawing.Point(210, 68);
+            this.txtBoxTotal.Location = new System.Drawing.Point(210, 109);
             this.txtBoxTotal.Name = "txtBoxTotal";
             this.txtBoxTotal.ReadOnly = true;
             this.txtBoxTotal.Size = new System.Drawing.Size(100, 22);
@@ -395,18 +352,14 @@
         private System.Windows.Forms.Button btnSupp;
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnConfirmer;
-        private System.Windows.Forms.Button btnAjouter;
         private System.Windows.Forms.BindingSource TriathleteBinding;
         private System.Windows.Forms.BindingSource TempsBinding;
+        private System.Windows.Forms.Label lblNat;
         private System.Windows.Forms.DataGridViewTextBoxColumn numTriathlonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numDossardDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dateInscriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tempsCourseCysclisteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tempsCourseDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tempsNatationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroTriathleteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tRIATHLETEDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tRIATHLONDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label lblNat;
     }
 }

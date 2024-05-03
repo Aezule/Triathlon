@@ -32,8 +32,6 @@ namespace Triathlon
                                                                   select unI).ToList();
                 TempsBinding.DataSource = listInscriptionsDuTriathlete;
             }
-        
-           
         }
 
         private void FormTemps_Load(object sender, EventArgs e)
@@ -56,6 +54,17 @@ namespace Triathlon
         private void TriathleteBinding_CurrentChanged(object sender, EventArgs e)
         {
             LoadTemps();
+            if (TempsBinding == null || TempsBinding.Count == 0 )
+            {     
+                    tabControlTemps.TabPages.Remove(tabPageDetails);
+            }
+            else
+            {
+                if (!tabControlTemps.TabPages.Contains(tabPageDetails))
+                {
+                    tabControlTemps.TabPages.Add(tabPageDetails);
+                }
+            }   
         }
 
         private void tabControlTemps_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,6 +78,25 @@ namespace Triathlon
                 INSCRIPTION unInscription = (INSCRIPTION)TempsBinding.Current;
                 txtBoxTotal.Text = (unInscription.tempsCourseCyscliste + unInscription.tempsCourse + unInscription.tempsNatation).ToString();
             }
+        }
+
+        private void btnSupp_Click(object sender, EventArgs e)
+        {
+            INSCRIPTION unInscription = (INSCRIPTION)TempsBinding.Current;
+            unInscription.tempsCourseCyscliste = 0;
+            unInscription.tempsCourse = 0;
+            unInscription.tempsNatation = 0;
+            context.SaveChanges();
+            TempsBinding.ResetCurrentItem();
+        }
+
+        private void btnConfirmer_Click(object sender, EventArgs e)
+        {
+            TempsBinding.EndEdit();
+            context.SaveChanges();
+            INSCRIPTION unInscription = (INSCRIPTION)TempsBinding.Current;
+            txtBoxTotal.Text = (unInscription.tempsCourseCyscliste + unInscription.tempsCourse + unInscription.tempsNatation).ToString();
+
         }
     }   
 }
