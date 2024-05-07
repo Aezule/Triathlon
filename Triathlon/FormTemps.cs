@@ -70,5 +70,7 @@ namespace Triathlon
                 txtBoxTotal.Text = (unInscription.tempsCourseCyscliste + unInscription.tempsCourse + unInscription.tempsNatation).ToString();
             }
         }
+
+        
     }   
 }

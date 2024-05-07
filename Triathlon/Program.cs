@@ -17,6 +17,7 @@ namespace Triathlon
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormTemps());
+            //Application.Run(new FormInscription());
         }
     }
 }

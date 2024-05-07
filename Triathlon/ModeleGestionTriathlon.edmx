@@ -155,6 +155,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetClassement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodeTri" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="triathlonDB_EntityModelStoreContainer">
           <EntitySet Name="AGE" EntityType="Self.AGE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="INSCRIPTION" EntityType="Self.INSCRIPTION" Schema="dbo" store:Type="Tables" />
@@ -350,6 +353,9 @@
             <End Role="TYPE_TRIATHLON" EntitySet="TYPE_TRIATHLON" />
             <End Role="TRIATHLON" EntitySet="TRIATHLONs" />
           </AssociationSet>
+          <FunctionImport Name="GetClassement" ReturnType="Collection(triathlonDB_EntityModel.GetClassement_Result)">
+            <Parameter Name="CodeTri" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="TRIATHLON">
           <Key>
@@ -387,6 +393,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetClassement_Result">
+          <Property Type="String" Name="numTriathlon" Nullable="false" MaxLength="4" />
+          <Property Type="String" Name="numeroTriathlete" Nullable="false" MaxLength="4" />
+          <Property Type="Decimal" Name="tempsCourseCyscliste" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="tempsCourse" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="tempsNatation" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="temps_total" Nullable="true" Precision="7" Scale="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -473,6 +487,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetClassement" FunctionName="triathlonDB_EntityModel.Store.GetClassement">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="triathlonDB_EntityModel.GetClassement_Result">
+                <ScalarProperty Name="numTriathlon" ColumnName="numTriathlon" />
+                <ScalarProperty Name="numeroTriathlete" ColumnName="numeroTriathlete" />
+                <ScalarProperty Name="tempsCourseCyscliste" ColumnName="tempsCourseCyscliste" />
+                <ScalarProperty Name="tempsCourse" ColumnName="tempsCourse" />
+                <ScalarProperty Name="tempsNatation" ColumnName="tempsNatation" />
+                <ScalarProperty Name="temps_total" ColumnName="temps_total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

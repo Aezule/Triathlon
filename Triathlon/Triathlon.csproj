@@ -93,6 +93,9 @@
     <Compile Include="FormTriathlon.Designer.cs">
       <DependentUpon>FormTriathlon.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetClassement_Result.cs">
+      <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
+    </Compile>
     <Compile Include="INSCRIPTION.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
@@ -124,6 +127,7 @@
     <Compile Include="TRIATHLON.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
+    <Compile Include="Triathlon_Suite.cs" />
     <Compile Include="TYPE_TRIATHLON.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
