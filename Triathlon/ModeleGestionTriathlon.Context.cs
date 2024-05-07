@@ -12,6 +12,8 @@ namespace Triathlon
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class TriathlonEntities : DbContext
     {
@@ -32,5 +34,14 @@ namespace Triathlon
         public virtual DbSet<TYPE_TRIATHLON> TYPE_TRIATHLON { get; set; }
         public virtual DbSet<VERIFIER> VERIFIERs { get; set; }
         public virtual DbSet<TRIATHLON> TRIATHLONs { get; set; }
+    
+        public virtual ObjectResult<GetClassement_Result> GetClassement(string codeTri)
+        {
+            var codeTriParameter = codeTri != null ?
+                new ObjectParameter("CodeTri", codeTri) :
+                new ObjectParameter("CodeTri", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetClassement_Result>("GetClassement", codeTriParameter);
+        }
     }
 }

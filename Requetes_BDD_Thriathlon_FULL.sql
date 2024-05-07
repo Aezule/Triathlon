@@ -510,4 +510,19 @@ END
 exec GetClassement 'TRI1';
 exec GetClassement 'TRI2';
 
+GRANT EXEC ON GetClassement TO UserTriathlon;
 
+/*trigger delete cascade triathlon*/
+
+CREATE OR ALTER TRIGGER TD_DeleteTriathlon ON TRIATHLON
+INSTEAD OF DELETE
+AS
+BEGIN
+   DELETE FROM VERIFIER WHERE numTriathlon = (select numTriathlon from deleted)
+
+   DELETE FROM INSCRIPTION WHERE numTriathlon = (select numTriathlon from deleted)
+
+   DELETE FROM TRIATHLON WHERE numTriathlon = (select numTriathlon from deleted)
+
+
+END

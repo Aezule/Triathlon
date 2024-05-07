@@ -32,11 +32,9 @@
             this.tabControleDopage = new System.Windows.Forms.TabControl();
             this.tabPageAffDopage = new System.Windows.Forms.TabPage();
             this.dataGridDopage = new System.Windows.Forms.DataGridView();
-            this.numTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numDossard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codeProduit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prelevement = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VerifBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDetails = new System.Windows.Forms.TabPage();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
@@ -52,11 +50,13 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAjoutCT = new System.Windows.Forms.Button();
+            this.numTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VerifBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabControleDopage.SuspendLayout();
             this.tabPageAffDopage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDopage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VerifBinding)).BeginInit();
             this.tabPageDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VerifBinding)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControleDopage
@@ -88,8 +88,8 @@
             this.dataGridDopage.AutoGenerateColumns = false;
             this.dataGridDopage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDopage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.numTriathlonDataGridViewTextBoxColumn,
             this.numDossard,
+            this.numTriathlonDataGridViewTextBoxColumn,
             this.codeProduit,
             this.prelevement});
             this.dataGridDopage.DataSource = this.VerifBinding;
@@ -99,15 +99,6 @@
             this.dataGridDopage.RowTemplate.Height = 24;
             this.dataGridDopage.Size = new System.Drawing.Size(755, 384);
             this.dataGridDopage.TabIndex = 0;
-            // 
-            // numTriathlonDataGridViewTextBoxColumn
-            // 
-            this.numTriathlonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.numTriathlonDataGridViewTextBoxColumn.DataPropertyName = "numTriathlon";
-            this.numTriathlonDataGridViewTextBoxColumn.HeaderText = "Triathlon";
-            this.numTriathlonDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.numTriathlonDataGridViewTextBoxColumn.Name = "numTriathlonDataGridViewTextBoxColumn";
-            this.numTriathlonDataGridViewTextBoxColumn.Width = 88;
             // 
             // numDossard
             // 
@@ -136,10 +127,6 @@
             this.prelevement.Name = "prelevement";
             this.prelevement.Width = 112;
             // 
-            // VerifBinding
-            // 
-            this.VerifBinding.DataSource = typeof(Triathlon.VERIFIER);
-            // 
             // tabPageDetails
             // 
             this.tabPageDetails.Controls.Add(this.btnSupprimer);
@@ -156,7 +143,7 @@
             this.tabPageDetails.Location = new System.Drawing.Point(4, 25);
             this.tabPageDetails.Name = "tabPageDetails";
             this.tabPageDetails.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDetails.Size = new System.Drawing.Size(768, 397);
+            this.tabPageDetails.Size = new System.Drawing.Size(768, 359);
             this.tabPageDetails.TabIndex = 1;
             this.tabPageDetails.Text = "Détails";
             this.tabPageDetails.UseVisualStyleBackColor = true;
@@ -199,6 +186,7 @@
             // 
             this.txtBoxCodeProduit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VerifBinding, "codeProduit", true));
             this.txtBoxCodeProduit.Location = new System.Drawing.Point(294, 201);
+            this.txtBoxCodeProduit.MaxLength = 6;
             this.txtBoxCodeProduit.Name = "txtBoxCodeProduit";
             this.txtBoxCodeProduit.Size = new System.Drawing.Size(100, 22);
             this.txtBoxCodeProduit.TabIndex = 13;
@@ -207,6 +195,7 @@
             // 
             this.txtBoxNumTriathlon.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VerifBinding, "numTriathlon", true));
             this.txtBoxNumTriathlon.Location = new System.Drawing.Point(294, 173);
+            this.txtBoxNumTriathlon.MaxLength = 6;
             this.txtBoxNumTriathlon.Name = "txtBoxNumTriathlon";
             this.txtBoxNumTriathlon.Size = new System.Drawing.Size(100, 22);
             this.txtBoxNumTriathlon.TabIndex = 11;
@@ -215,6 +204,7 @@
             // 
             this.txtboxNumTriathlete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VerifBinding, "numDossard", true));
             this.txtboxNumTriathlete.Location = new System.Drawing.Point(294, 144);
+            this.txtboxNumTriathlete.MaxLength = 3;
             this.txtboxNumTriathlete.Name = "txtboxNumTriathlete";
             this.txtboxNumTriathlete.Size = new System.Drawing.Size(100, 22);
             this.txtboxNumTriathlete.TabIndex = 9;
@@ -223,6 +213,7 @@
             // 
             this.txtboxTauxPrelev.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VerifBinding, "prelevement", true));
             this.txtboxTauxPrelev.Location = new System.Drawing.Point(294, 229);
+            this.txtboxTauxPrelev.MaxLength = 2;
             this.txtboxTauxPrelev.Name = "txtboxTauxPrelev";
             this.txtboxTauxPrelev.Size = new System.Drawing.Size(100, 22);
             this.txtboxTauxPrelev.TabIndex = 8;
@@ -292,10 +283,24 @@
             this.btnAjoutCT.UseVisualStyleBackColor = false;
             this.btnAjoutCT.Click += new System.EventHandler(this.btnAjoutCT_Click);
             // 
+            // numTriathlonDataGridViewTextBoxColumn
+            // 
+            this.numTriathlonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.numTriathlonDataGridViewTextBoxColumn.DataPropertyName = "numTriathlon";
+            this.numTriathlonDataGridViewTextBoxColumn.HeaderText = "Triathlon";
+            this.numTriathlonDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.numTriathlonDataGridViewTextBoxColumn.Name = "numTriathlonDataGridViewTextBoxColumn";
+            this.numTriathlonDataGridViewTextBoxColumn.Width = 88;
+            // 
+            // VerifBinding
+            // 
+            this.VerifBinding.DataSource = typeof(Triathlon.VERIFIER);
+            // 
             // FormControle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnAjoutCT);
             this.Controls.Add(this.tabControleDopage);
@@ -305,9 +310,9 @@
             this.tabControleDopage.ResumeLayout(false);
             this.tabPageAffDopage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDopage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.VerifBinding)).EndInit();
             this.tabPageDetails.ResumeLayout(false);
             this.tabPageDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VerifBinding)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,10 +337,10 @@
         private System.Windows.Forms.BindingSource VerifBinding;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numTriathlonDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnAjoutCT;
         private System.Windows.Forms.DataGridViewTextBoxColumn numDossard;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numTriathlonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeProduit;
         private System.Windows.Forms.DataGridViewTextBoxColumn prelevement;
-        private System.Windows.Forms.Button btnAjoutCT;
     }
 }
