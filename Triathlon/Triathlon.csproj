@@ -133,6 +133,7 @@
     <Compile Include="TRIATHLON.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
+    <Compile Include="Triathlon_Suite.cs" />
     <Compile Include="TYPE_TRIATHLON.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
