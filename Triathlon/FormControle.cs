@@ -13,6 +13,8 @@ namespace Triathlon
 {
     public partial class FormControle : Form
     {
+        /*Booléen qui vérifie si l'on ajoute un nouveau produit où si l'on modifie
+         un produit existant*/
         bool verifNew = false;
         public FormControle()
         {
@@ -20,6 +22,7 @@ namespace Triathlon
         }
         TriathlonEntities context = new TriathlonEntities();
 
+        /* Charge les données de la table Verifiers dans le binding source */
         private void FormControle_Load(object sender, EventArgs e)
         {
             try
@@ -31,6 +34,8 @@ namespace Triathlon
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
+        /* Enregistre dans la base de données les nouveaux objets de la table verifiers 
+         * ou les modifications de ces derniers */
         private void btnValider_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Etes-vous sur de vouloir enregistrer le controle ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -58,7 +63,7 @@ namespace Triathlon
                     }
                     tabControleDopage.SelectedIndex = 0;
                 }
-                catch(Exception er)
+                catch
                 {
                     context.Entry(unCT).State = EntityState.Unchanged;
                     VerifBinding.ResetCurrentItem();
@@ -69,6 +74,7 @@ namespace Triathlon
             }
         }
 
+        /* Annule les modifications en cours */
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
             tabControleDopage.SelectedIndex = 0;
@@ -84,6 +90,7 @@ namespace Triathlon
             }
         }
 
+        //supprime le controle sélectionner
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             VERIFIER leCT = (VERIFIER)VerifBinding.Current;
