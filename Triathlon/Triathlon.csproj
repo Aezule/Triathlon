@@ -190,6 +190,7 @@
     <None Include="Properties\DataSources\PRODUIT.datasource" />
     <None Include="Properties\DataSources\TRIATHLETE.datasource" />
     <None Include="Properties\DataSources\TRIATHLON.datasource" />
+    <None Include="Properties\DataSources\TYPE_TRIATHLON.datasource" />
     <None Include="Properties\DataSources\VERIFIER.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
