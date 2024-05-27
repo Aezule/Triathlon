@@ -31,10 +31,12 @@ namespace Triathlon
                 VerifBinding.DataSource = context.VERIFIERs.Local.ToBindingList();
                 
                 context.INSCRIPTIONs.Load();
-                var Dossard = context.INSCRIPTIONs
-                                        .Select(i => new { i.numDossard }).ToList();
 
-                comboTriathlete.DataSource = Dossard;
+                List<INSCRIPTION> listeInscriptions = (from unI in context.INSCRIPTIONs
+                                                       select unI).ToList();
+
+
+                comboTriathlete.DataSource = listeInscriptions;
                 comboTriathlete.DisplayMember = "numDossard";
                 comboTriathlete.ValueMember = "numDossard";
             }
@@ -72,8 +74,10 @@ namespace Triathlon
                 }
                 catch(Exception er)
                 {
-                    context.Entry(unCT).State = EntityState.Unchanged;
                     VerifBinding.ResetCurrentItem();
+                    context.Entry(unCT).State = EntityState.Unchanged;
+                    
+
                     MessageBox.Show("Echec de l'insertion !", "Attention", MessageBoxButtons.OK);
                 }
                 tabControleDopage_SelectedIndexChanged(sender, e);
@@ -136,11 +140,42 @@ namespace Triathlon
         {
             try
             {
-                string numDossard = comboTriathlete.SelectedValue.ToString();
-                var Triathlon = context.INSCRIPTIONs
-                                        .Where(i => i.numDossard == numDossard)
-                                        .Select(i => new { i.numTriathlon });
-                //comboTriathlon.DataSource = Triathlon;
+                string numDossartTxt = "";
+
+                if(verifNew == true)
+                {
+                    numDossartTxt = comboTriathlete.SelectedValue.ToString();
+                }
+                
+                //TRIATHLON Triathlon = context.INSCRIPTIONs
+                //                        .Where(i => i.numDossard == numDossard)
+                //                        .Select(i => new { i.numTriathlon });
+
+
+                List<INSCRIPTION> lesInscription = (from unI in context.INSCRIPTIONs
+                                           where unI.numDossard == numDossartTxt
+                                           select unI).ToList();
+
+                List<TRIATHLON> lesTriathlons = new List<TRIATHLON>();
+
+
+                foreach (INSCRIPTION leI in lesInscription)
+                {
+
+                    List<TRIATHLON> lesT2 = (from unT in context.TRIATHLONs
+                                             where leI.numTriathlon == unT.numTriathlon
+                                             select unT).ToList();
+                         
+                    foreach(TRIATHLON t in lesT2)
+                    {
+                        lesTriathlons.Add(t);
+                    }
+                }
+
+
+                
+
+                comboTriathlon.DataSource = lesTriathlons;
                 //comboTriathlon.DisplayMember = "numTriathlon";
                 //comboTriathlon.ValueMember = "numTriathlon";
 

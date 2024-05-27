@@ -87,5 +87,19 @@ namespace Triathlon
                 Application.OpenForms["FormClassement"].BringToFront();
             }
         }
+
+        private void produitsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["Produits"] == null)
+            {
+                Produits frm = new Produits();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+            else
+            {
+                Application.OpenForms["Produits"].BringToFront();
+            }
+        }
     }
 }
