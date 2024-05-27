@@ -77,6 +77,25 @@ namespace Triathlon
            
         }
 
-     
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            TRIATHLON leT = (TRIATHLON)TriathlonBinding.Current;
+
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Etes-vous sur de vouloir supprimer le controle ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    context.TRIATHLONs.Remove(leT);
+                    context.SaveChanges();
+                    tabControlTriathlon.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                context.Entry(leT).State = EntityState.Unchanged;
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
