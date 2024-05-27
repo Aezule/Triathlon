@@ -43,9 +43,12 @@
             this.dataGridClassement.AllowUserToDeleteRows = false;
             this.dataGridClassement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClassement.Location = new System.Drawing.Point(12, 91);
+            this.dataGridClassement.MultiSelect = false;
             this.dataGridClassement.Name = "dataGridClassement";
+            this.dataGridClassement.ReadOnly = true;
             this.dataGridClassement.RowHeadersWidth = 51;
             this.dataGridClassement.RowTemplate.Height = 24;
+            this.dataGridClassement.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridClassement.Size = new System.Drawing.Size(843, 416);
             this.dataGridClassement.TabIndex = 0;
             // 
