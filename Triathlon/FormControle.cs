@@ -13,6 +13,7 @@ namespace Triathlon
 {
     public partial class FormControle : Form
     {
+        bool verifNew = false;
         public FormControle()
         {
             InitializeComponent();
@@ -32,29 +33,46 @@ namespace Triathlon
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Etes-vous sur de vouloir modifier le controle ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show("Etes-vous sur de vouloir enregistrer le controle ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 VERIFIER unCT = new VERIFIER();
                 unCT = (VERIFIER)VerifBinding.Current;
                 try
                 {
-                    VerifBinding.EndEdit();
-                    context.SaveChanges();
-                    MessageBox.Show("Modification réussie !", "confirmation", MessageBoxButtons.OK);
+                    if(verifNew == true)
+                    {
+                        VerifBinding.EndEdit();
+
+                        context.VERIFIERs.Add(unCT);
+                        context.SaveChanges();
+                        MessageBox.Show("Ajout réussie !", "confirmation", MessageBoxButtons.OK);
+                        VerifBinding.ResetBindings(false);
+                    }
+                    else
+                    {
+                        VerifBinding.EndEdit();
+                        
+                        context.SaveChanges();
+                        MessageBox.Show("Modification réussie !", "confirmation", MessageBoxButtons.OK);
+                    }
+                    tabControleDopage.SelectedIndex = 0;
                 }
-                catch
+                catch(Exception er)
                 {
                     context.Entry(unCT).State = EntityState.Unchanged;
                     VerifBinding.ResetCurrentItem();
+                    MessageBox.Show("Echec de l'insertion !", "Attention", MessageBoxButtons.OK);
                 }
-
+                tabControleDopage_SelectedIndexChanged(sender, e);
+                
             }
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            VerifBinding.CancelEdit();
+            tabControleDopage.SelectedIndex = 0;
+            tabControleDopage_SelectedIndexChanged(sender, e);
         }
 
         private void tabControleDopage_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,6 +80,7 @@ namespace Triathlon
             if(tabControleDopage.SelectedIndex == 0)
             {
                 VerifBinding.CancelEdit();
+                verifNew = false;
             }
         }
 
@@ -84,11 +103,15 @@ namespace Triathlon
                 context.Entry(leCT).State = EntityState.Unchanged;
                 MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            verifNew = false;
         }
-
+        
+        //bool true pour nouveau false pour modif
         private void btnAjoutCT_Click(object sender, EventArgs e)
         {
             VerifBinding.AddNew();
+            verifNew = true;
+            tabControleDopage.SelectedIndex = 1;
         }
     }
 }
