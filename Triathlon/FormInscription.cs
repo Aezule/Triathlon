@@ -47,7 +47,7 @@ namespace Triathlon
         }
 
         /// <summary>
-        /// Ajoute une nouvelle inscription avec les données receuillis sur le formulaire d'ajout
+        /// Ajoute une nouvelle inscription avec les données recueillis sur le formulaire d'ajout
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -58,10 +58,10 @@ namespace Triathlon
             try
             {
 
-                //Vérification de l'existance du trathlon et du triathlète afin d'éviter les erreurs dans la base de données
-                bool triathlonExiste = (from unT in context.TRIATHLONs // Pour un Trathlon dans le Dbset des traithlons
-                                        where unT.numTriathlon == txtTriathlon.Text //ou le numéri de triathlon est le même que celui inséré dans la textbox du formulaire
-                                        select unT).Any(); //On sélection et on regarde s'il contient des éléments (Any())
+                //Vérification de l'existence du triathlon et du triathlète afin d'éviter les erreurs dans la base de données
+                bool triathlonExiste = (from unT in context.TRIATHLONs // Pour un Triathlon dans le Dbset des traithlons
+                                        where unT.numTriathlon == txtTriathlon.Text //ou le numéro de triathlon est le même que celui inséré dans la textbox du formulaire
+                                        select unT).Any(); // On sélectionne et on regarde s'il contient des éléments (Any())
 
                 bool triathletExiste = (from unT in context.TRIATHLETEs
                                         where unT.numeroTriathlete == textTriathlete.Text
@@ -74,10 +74,10 @@ namespace Triathlon
                         //Affiche la bonne erreur selon l'entré.
                         if (!triathletExiste)
                         {
-                            MessageBox.Show("Le thriathlète n'existe pas", "Ajout Inscription", MessageBoxButtons.OK);
+                            MessageBox.Show("Le triathlète n'existe pas", "Ajout Inscription", MessageBoxButtons.OK);
                         }
                         else if(!triathlonExiste){
-                            MessageBox.Show("Le thriathlon n'existe pas", "Ajout Inscription", MessageBoxButtons.OK);
+                            MessageBox.Show("Le triathlon n'existe pas", "Ajout Inscription", MessageBoxButtons.OK);
                         }
                     }
                     else
@@ -95,16 +95,16 @@ namespace Triathlon
 
                         laNouvelInscription.dateInscription = dtPickerDate.Value.Date;
 
-                        //On ajoute une valeur par défaut pour le numéro de dossard afin qu'il soit bien validé par SQL, un Trigger se chargera de remplacer la valeur
+                        // On ajoute une valeur par défaut pour le numéro de dossard afin qu'il soit bien validé par SQL, un Trigger se chargera de remplacer la valeur
                         laNouvelInscription.numDossard = "0";
 
                         context.INSCRIPTIONs.Add(laNouvelInscription);
                         context.SaveChanges();
 
-                        //Affichage du message lors que l'ajout
+                        // Affichage du message lors que l'ajout
                         MessageBox.Show("Inscription crée !", "Ajout Inscription", MessageBoxButtons.OK);
 
-                        //On appelle la méthode pour refresh la datagrid
+                        // On appelle la méthode pour refresh la datagrid
                         bindingSourceTriathlons_CurrentChanged(sender, e);
 
 
@@ -117,7 +117,7 @@ namespace Triathlon
         }
 
         /// <summary>
-        /// Supprime l'inscription séléectionné dans le binding source des inscriptions du datagrid de la page supprimer inscription
+        /// Supprime l'inscription séléctionné dans le binding source des inscriptions du datagrid de la page supprimer inscription
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
