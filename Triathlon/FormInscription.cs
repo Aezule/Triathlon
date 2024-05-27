@@ -53,16 +53,66 @@ namespace Triathlon
         /// <param name="e"></param>
         private void btnAjouterInscription_Click(object sender, EventArgs e)
         {
-            INSCRIPTION laNouvelInscription = new INSCRIPTION();
+                      
+
+            try
+            {
+
+                //Vérification de l'existance du trathlon et du triathlète afin d'éviter les erreurs dans la base de données
+                bool triathlonExiste = (from unT in context.TRIATHLONs // Pour un Trathlon dans le Dbset des traithlons
+                                        where unT.numTriathlon == txtTriathlon.Text //ou le numéri de triathlon est le même que celui inséré dans la textbox du formulaire
+                                        select unT).Any(); //On sélection et on regarde s'il contient des éléments (Any())
+
+                bool triathletExiste = (from unT in context.TRIATHLETEs
+                                        where unT.numeroTriathlete == textTriathlete.Text
+                                        select unT).Any();
+
+                if(MessageBox.Show("Voulez vous ajouter cette inscription ?","Ajout Inscription",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (!triathletExiste || !triathletExiste)
+                    {
+                        //Affiche la bonne erreur selon l'entré.
+                        if (!triathletExiste)
+                        {
+                            MessageBox.Show("Le thriathlète n'existe pas", "Ajout Inscription", MessageBoxButtons.OK);
+                        }
+                        else if(!triathlonExiste){
+                            MessageBox.Show("Le thriathlon n'existe pas", "Ajout Inscription", MessageBoxButtons.OK);
+                        }
+                    }
+                    else
+                    {
+                        //Ajout d'une inscription
+                        INSCRIPTION laNouvelInscription = new INSCRIPTION();
+
+                        laNouvelInscription.TRIATHLETE = (from unT in context.TRIATHLETEs
+                                                          where unT.numeroTriathlete == textTriathlete.Text
+                                                          select unT).FirstOrDefault();
+
+                        laNouvelInscription.TRIATHLON = (from unT in context.TRIATHLONs
+                                                            where unT.numTriathlon == txtTriathlon.Text
+                                                            select unT).FirstOrDefault();
+
+                        laNouvelInscription.dateInscription = dtPickerDate.Value.Date;
+
+                        //On ajoute une valeur par défaut pour le numéro de dossard afin qu'il soit bien validé par SQL, un Trigger se chargera de remplacer la valeur
+                        laNouvelInscription.numDossard = "0";
+
+                        context.INSCRIPTIONs.Add(laNouvelInscription);
+                        context.SaveChanges();
+
+                        //Affichage du message lors que l'ajout
+                        MessageBox.Show("Inscription crée !", "Ajout Inscription", MessageBoxButtons.OK);
+
+                        //On appelle la méthode pour refresh la datagrid
+                        bindingSourceTriathlons_CurrentChanged(sender, e);
 
 
+                    }
+                }
 
-            bool triathlonExiste = (from unT in context.TRIATHLONs
-                              where unT.numTriathlon == txtTriathlon.Text
-                              select unT).Any();
-
-
-          
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
 
@@ -73,7 +123,29 @@ namespace Triathlon
         /// <param name="e"></param>
         private void btnSupprimerInscription_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            INSCRIPTION laInscription = (INSCRIPTION)bindingSourceInscriptionsDunTriathlon.Current;
+
+            //Message de confirmation
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Etes-vous sur de vouloir supprimer cette inscription ?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //On retire l'inscription de la DbSet des inscriptions
+                    context.INSCRIPTIONs.Remove(laInscription);
+                    context.SaveChanges();
+
+                    //On appelle la méthode pour refresh la datagrid
+                    bindingSourceTriathlons_CurrentChanged(sender, e);
+                    
+
+                }
+            }
+            catch (Exception ex)
+            {
+                context.Entry(laInscription).State = EntityState.Unchanged;
+                MessageBox.Show(ex.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>

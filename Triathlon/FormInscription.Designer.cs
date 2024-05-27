@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tabControlInscription = new System.Windows.Forms.TabControl();
             this.tabPageAjoutInsc = new System.Windows.Forms.TabPage();
+            this.textTriathlete = new System.Windows.Forms.TextBox();
+            this.txtTriathlon = new System.Windows.Forms.TextBox();
             this.btnAjouterInscription = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
             this.dtPickerDate = new System.Windows.Forms.DateTimePicker();
@@ -39,7 +41,7 @@
             this.tabPageSuppInsc = new System.Windows.Forms.TabPage();
             this.labelNoInscription = new System.Windows.Forms.Label();
             this.btnSupprimerInscription = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridInscriptionAsupp = new System.Windows.Forms.DataGridView();
             this.numDossardDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateInscriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tempsCourseCysclisteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,12 +53,10 @@
             this.comboBoxTriathlon = new System.Windows.Forms.ComboBox();
             this.bindingSourceTriathlons = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceInscriptionAll = new System.Windows.Forms.BindingSource(this.components);
-            this.txtTriathlon = new System.Windows.Forms.TextBox();
-            this.textTriathlete = new System.Windows.Forms.TextBox();
             this.tabControlInscription.SuspendLayout();
             this.tabPageAjoutInsc.SuspendLayout();
             this.tabPageSuppInsc.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridInscriptionAsupp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceInscriptionsDunTriathlon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTriathlons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceInscriptionAll)).BeginInit();
@@ -90,6 +90,20 @@
             this.tabPageAjoutInsc.TabIndex = 0;
             this.tabPageAjoutInsc.Text = "Ajouter une Inscription";
             this.tabPageAjoutInsc.UseVisualStyleBackColor = true;
+            // 
+            // textTriathlete
+            // 
+            this.textTriathlete.Location = new System.Drawing.Point(242, 105);
+            this.textTriathlete.Name = "textTriathlete";
+            this.textTriathlete.Size = new System.Drawing.Size(171, 26);
+            this.textTriathlete.TabIndex = 8;
+            // 
+            // txtTriathlon
+            // 
+            this.txtTriathlon.Location = new System.Drawing.Point(242, 44);
+            this.txtTriathlon.Name = "txtTriathlon";
+            this.txtTriathlon.Size = new System.Drawing.Size(171, 26);
+            this.txtTriathlon.TabIndex = 7;
             // 
             // btnAjouterInscription
             // 
@@ -143,7 +157,7 @@
             // 
             this.tabPageSuppInsc.Controls.Add(this.labelNoInscription);
             this.tabPageSuppInsc.Controls.Add(this.btnSupprimerInscription);
-            this.tabPageSuppInsc.Controls.Add(this.dataGridView1);
+            this.tabPageSuppInsc.Controls.Add(this.dataGridInscriptionAsupp);
             this.tabPageSuppInsc.Controls.Add(this.lblInscription);
             this.tabPageSuppInsc.Controls.Add(this.comboBoxTriathlon);
             this.tabPageSuppInsc.Location = new System.Drawing.Point(4, 29);
@@ -176,26 +190,26 @@
             this.btnSupprimerInscription.UseVisualStyleBackColor = false;
             this.btnSupprimerInscription.Click += new System.EventHandler(this.btnSupprimerInscription_Click);
             // 
-            // dataGridView1
+            // dataGridInscriptionAsupp
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridInscriptionAsupp.AutoGenerateColumns = false;
+            this.dataGridInscriptionAsupp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridInscriptionAsupp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridInscriptionAsupp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numDossardDataGridViewTextBoxColumn,
             this.dateInscriptionDataGridViewTextBoxColumn,
             this.tempsCourseCysclisteDataGridViewTextBoxColumn,
             this.tempsCourseDataGridViewTextBoxColumn,
             this.tempsNatationDataGridViewTextBoxColumn,
             this.numeroTriathleteDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bindingSourceInscriptionsDunTriathlon;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 81);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(848, 344);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridInscriptionAsupp.DataSource = this.bindingSourceInscriptionsDunTriathlon;
+            this.dataGridInscriptionAsupp.Location = new System.Drawing.Point(8, 81);
+            this.dataGridInscriptionAsupp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridInscriptionAsupp.Name = "dataGridInscriptionAsupp";
+            this.dataGridInscriptionAsupp.RowHeadersWidth = 51;
+            this.dataGridInscriptionAsupp.RowTemplate.Height = 24;
+            this.dataGridInscriptionAsupp.Size = new System.Drawing.Size(848, 344);
+            this.dataGridInscriptionAsupp.TabIndex = 2;
             // 
             // numDossardDataGridViewTextBoxColumn
             // 
@@ -271,20 +285,6 @@
             // 
             this.bindingSourceInscriptionAll.DataSource = typeof(Triathlon.INSCRIPTION);
             // 
-            // txtTriathlon
-            // 
-            this.txtTriathlon.Location = new System.Drawing.Point(242, 44);
-            this.txtTriathlon.Name = "txtTriathlon";
-            this.txtTriathlon.Size = new System.Drawing.Size(171, 26);
-            this.txtTriathlon.TabIndex = 7;
-            // 
-            // textTriathlete
-            // 
-            this.textTriathlete.Location = new System.Drawing.Point(242, 105);
-            this.textTriathlete.Name = "textTriathlete";
-            this.textTriathlete.Size = new System.Drawing.Size(171, 26);
-            this.textTriathlete.TabIndex = 8;
-            // 
             // FormInscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -300,7 +300,7 @@
             this.tabPageAjoutInsc.PerformLayout();
             this.tabPageSuppInsc.ResumeLayout(false);
             this.tabPageSuppInsc.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridInscriptionAsupp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceInscriptionsDunTriathlon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceTriathlons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceInscriptionAll)).EndInit();
@@ -321,7 +321,7 @@
         private System.Windows.Forms.ComboBox comboBoxTriathlon;
         private System.Windows.Forms.Label lblInscription;
         private System.Windows.Forms.Button btnSupprimerInscription;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridInscriptionAsupp;
         private System.Windows.Forms.BindingSource bindingSourceInscriptionsDunTriathlon;
         private System.Windows.Forms.BindingSource bindingSourceTriathlons;
         private System.Windows.Forms.BindingSource bindingSourceInscriptionAll;
