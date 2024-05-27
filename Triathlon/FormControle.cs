@@ -29,7 +29,14 @@ namespace Triathlon
             {
                 context.VERIFIERs.Load();
                 VerifBinding.DataSource = context.VERIFIERs.Local.ToBindingList();
+                
+                context.INSCRIPTIONs.Load();
+                var Dossard = context.INSCRIPTIONs
+                                        .Select(i => new { i.numDossard }).ToList();
 
+                comboTriathlete.DataSource = Dossard;
+                comboTriathlete.DisplayMember = "numDossard";
+                comboTriathlete.ValueMember = "numDossard";
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -63,7 +70,7 @@ namespace Triathlon
                     }
                     tabControleDopage.SelectedIndex = 0;
                 }
-                catch
+                catch(Exception er)
                 {
                     context.Entry(unCT).State = EntityState.Unchanged;
                     VerifBinding.ResetCurrentItem();
@@ -87,6 +94,8 @@ namespace Triathlon
             {
                 VerifBinding.CancelEdit();
                 verifNew = false;
+                comboTriathlete.Enabled = false;
+                comboTriathlon.Enabled = false;
             }
         }
 
@@ -118,7 +127,27 @@ namespace Triathlon
         {
             VerifBinding.AddNew();
             verifNew = true;
+            comboTriathlete.Enabled = true;
+            comboTriathlon.Enabled = true;
             tabControleDopage.SelectedIndex = 1;
+        }
+
+        private void comboTriathlete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string numDossard = comboTriathlete.SelectedValue.ToString();
+                var Triathlon = context.INSCRIPTIONs
+                                        .Where(i => i.numDossard == numDossard)
+                                        .Select(i => new { i.numTriathlon });
+                //comboTriathlon.DataSource = Triathlon;
+                //comboTriathlon.DisplayMember = "numTriathlon";
+                //comboTriathlon.ValueMember = "numTriathlon";
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

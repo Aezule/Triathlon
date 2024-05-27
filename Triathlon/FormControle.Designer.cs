@@ -40,8 +40,6 @@
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnValider = new System.Windows.Forms.Button();
             this.txtBoxCodeProduit = new System.Windows.Forms.TextBox();
-            this.txtBoxNumTriathlon = new System.Windows.Forms.TextBox();
-            this.txtboxNumTriathlete = new System.Windows.Forms.TextBox();
             this.txtboxTauxPrelev = new System.Windows.Forms.TextBox();
             this.lblCodeProduit = new System.Windows.Forms.Label();
             this.lblNumTriathlon = new System.Windows.Forms.Label();
@@ -50,6 +48,8 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAjoutCT = new System.Windows.Forms.Button();
+            this.comboTriathlon = new System.Windows.Forms.ComboBox();
+            this.comboTriathlete = new System.Windows.Forms.ComboBox();
             this.numTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VerifBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabControleDopage.SuspendLayout();
@@ -129,12 +129,12 @@
             // 
             // tabPageDetails
             // 
+            this.tabPageDetails.Controls.Add(this.comboTriathlete);
+            this.tabPageDetails.Controls.Add(this.comboTriathlon);
             this.tabPageDetails.Controls.Add(this.btnSupprimer);
             this.tabPageDetails.Controls.Add(this.btnAnnuler);
             this.tabPageDetails.Controls.Add(this.btnValider);
             this.tabPageDetails.Controls.Add(this.txtBoxCodeProduit);
-            this.tabPageDetails.Controls.Add(this.txtBoxNumTriathlon);
-            this.tabPageDetails.Controls.Add(this.txtboxNumTriathlete);
             this.tabPageDetails.Controls.Add(this.txtboxTauxPrelev);
             this.tabPageDetails.Controls.Add(this.lblCodeProduit);
             this.tabPageDetails.Controls.Add(this.lblNumTriathlon);
@@ -190,24 +190,6 @@
             this.txtBoxCodeProduit.Name = "txtBoxCodeProduit";
             this.txtBoxCodeProduit.Size = new System.Drawing.Size(100, 22);
             this.txtBoxCodeProduit.TabIndex = 13;
-            // 
-            // txtBoxNumTriathlon
-            // 
-            this.txtBoxNumTriathlon.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VerifBinding, "numTriathlon", true));
-            this.txtBoxNumTriathlon.Location = new System.Drawing.Point(294, 173);
-            this.txtBoxNumTriathlon.MaxLength = 6;
-            this.txtBoxNumTriathlon.Name = "txtBoxNumTriathlon";
-            this.txtBoxNumTriathlon.Size = new System.Drawing.Size(100, 22);
-            this.txtBoxNumTriathlon.TabIndex = 11;
-            // 
-            // txtboxNumTriathlete
-            // 
-            this.txtboxNumTriathlete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VerifBinding, "numDossard", true));
-            this.txtboxNumTriathlete.Location = new System.Drawing.Point(294, 144);
-            this.txtboxNumTriathlete.MaxLength = 3;
-            this.txtboxNumTriathlete.Name = "txtboxNumTriathlete";
-            this.txtboxNumTriathlete.Size = new System.Drawing.Size(100, 22);
-            this.txtboxNumTriathlete.TabIndex = 9;
             // 
             // txtboxTauxPrelev
             // 
@@ -283,6 +265,27 @@
             this.btnAjoutCT.UseVisualStyleBackColor = false;
             this.btnAjoutCT.Click += new System.EventHandler(this.btnAjoutCT_Click);
             // 
+            // comboTriathlon
+            // 
+            this.comboTriathlon.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VerifBinding, "numTriathlon", true));
+            this.comboTriathlon.Enabled = false;
+            this.comboTriathlon.FormattingEnabled = true;
+            this.comboTriathlon.Location = new System.Drawing.Point(295, 168);
+            this.comboTriathlon.Name = "comboTriathlon";
+            this.comboTriathlon.Size = new System.Drawing.Size(99, 24);
+            this.comboTriathlon.TabIndex = 17;
+            // 
+            // comboTriathlete
+            // 
+            this.comboTriathlete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.VerifBinding, "numDossard", true));
+            this.comboTriathlete.Enabled = false;
+            this.comboTriathlete.FormattingEnabled = true;
+            this.comboTriathlete.Location = new System.Drawing.Point(295, 138);
+            this.comboTriathlete.Name = "comboTriathlete";
+            this.comboTriathlete.Size = new System.Drawing.Size(99, 24);
+            this.comboTriathlete.TabIndex = 18;
+            this.comboTriathlete.SelectedIndexChanged += new System.EventHandler(this.comboTriathlete_SelectedIndexChanged);
+            // 
             // numTriathlonDataGridViewTextBoxColumn
             // 
             this.numTriathlonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -331,8 +334,6 @@
         private System.Windows.Forms.Button btnAnnuler;
         private System.Windows.Forms.Button btnValider;
         private System.Windows.Forms.TextBox txtBoxCodeProduit;
-        private System.Windows.Forms.TextBox txtBoxNumTriathlon;
-        private System.Windows.Forms.TextBox txtboxNumTriathlete;
         private System.Windows.Forms.TextBox txtboxTauxPrelev;
         private System.Windows.Forms.BindingSource VerifBinding;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -342,5 +343,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numTriathlonDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeProduit;
         private System.Windows.Forms.DataGridViewTextBoxColumn prelevement;
+        private System.Windows.Forms.ComboBox comboTriathlon;
+        private System.Windows.Forms.ComboBox comboTriathlete;
     }
 }
