@@ -30,33 +30,35 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.codeProduitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.libelleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tauxMaxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceProduits = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddProduit = new System.Windows.Forms.Button();
             this.btnSuppProduit = new System.Windows.Forms.Button();
             this.tabControlProduits = new System.Windows.Forms.TabControl();
             this.tabPageProduits = new System.Windows.Forms.TabPage();
             this.tabPageDetails = new System.Windows.Forms.TabPage();
-            this.textBoxCode = new System.Windows.Forms.TextBox();
-            this.textBoxLib = new System.Windows.Forms.TextBox();
-            this.textBoxTaux = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnAnnuler = new System.Windows.Forms.Button();
-            this.btnValider = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
-            this.codeProduitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.libelleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tauxMaxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceProduits = new System.Windows.Forms.BindingSource(this.components);
+            this.btnValider = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxTaux = new System.Windows.Forms.TextBox();
+            this.textBoxLib = new System.Windows.Forms.TextBox();
+            this.textBoxCode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduits)).BeginInit();
             this.tabControlProduits.SuspendLayout();
             this.tabPageProduits.SuspendLayout();
             this.tabPageDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduits)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -65,11 +67,45 @@
             this.tauxMaxDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.bindingSourceProduits;
             this.dataGridView1.Location = new System.Drawing.Point(6, 21);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(537, 521);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // codeProduitDataGridViewTextBoxColumn
+            // 
+            this.codeProduitDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.codeProduitDataGridViewTextBoxColumn.DataPropertyName = "codeProduit";
+            this.codeProduitDataGridViewTextBoxColumn.HeaderText = "codeProduit";
+            this.codeProduitDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.codeProduitDataGridViewTextBoxColumn.Name = "codeProduitDataGridViewTextBoxColumn";
+            this.codeProduitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // libelleDataGridViewTextBoxColumn
+            // 
+            this.libelleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.libelleDataGridViewTextBoxColumn.DataPropertyName = "libelle";
+            this.libelleDataGridViewTextBoxColumn.HeaderText = "libelle";
+            this.libelleDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.libelleDataGridViewTextBoxColumn.Name = "libelleDataGridViewTextBoxColumn";
+            this.libelleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tauxMaxDataGridViewTextBoxColumn
+            // 
+            this.tauxMaxDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tauxMaxDataGridViewTextBoxColumn.DataPropertyName = "tauxMax";
+            this.tauxMaxDataGridViewTextBoxColumn.HeaderText = "tauxMax";
+            this.tauxMaxDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.tauxMaxDataGridViewTextBoxColumn.Name = "tauxMaxDataGridViewTextBoxColumn";
+            this.tauxMaxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bindingSourceProduits
+            // 
+            this.bindingSourceProduits.DataSource = typeof(Triathlon.PRODUIT);
             // 
             // btnAddProduit
             // 
@@ -134,67 +170,15 @@
             this.tabPageDetails.Text = "Détails";
             this.tabPageDetails.UseVisualStyleBackColor = true;
             // 
-            // textBoxCode
+            // btnModifier
             // 
-            this.textBoxCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceProduits, "codeProduit", true));
-            this.textBoxCode.Location = new System.Drawing.Point(136, 209);
-            this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.ReadOnly = true;
-            this.textBoxCode.Size = new System.Drawing.Size(250, 26);
-            this.textBoxCode.TabIndex = 0;
-            // 
-            // textBoxLib
-            // 
-            this.textBoxLib.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceProduits, "libelle", true));
-            this.textBoxLib.Location = new System.Drawing.Point(136, 269);
-            this.textBoxLib.Name = "textBoxLib";
-            this.textBoxLib.Size = new System.Drawing.Size(250, 26);
-            this.textBoxLib.TabIndex = 1;
-            // 
-            // textBoxTaux
-            // 
-            this.textBoxTaux.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceProduits, "tauxMax", true));
-            this.textBoxTaux.Location = new System.Drawing.Point(136, 331);
-            this.textBoxTaux.Name = "textBoxTaux";
-            this.textBoxTaux.Size = new System.Drawing.Size(250, 26);
-            this.textBoxTaux.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 275);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Libelle";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 337);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Taux Max";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 209);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Code";
-            // 
-            // btnAnnuler
-            // 
-            this.btnAnnuler.Location = new System.Drawing.Point(437, 310);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(150, 47);
-            this.btnAnnuler.TabIndex = 6;
-            this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = true;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            this.btnModifier.Location = new System.Drawing.Point(437, 188);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(151, 47);
+            this.btnModifier.TabIndex = 8;
+            this.btnModifier.Text = "Modifier";
+            this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // btnValider
             // 
@@ -206,43 +190,67 @@
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
-            // btnModifier
+            // btnAnnuler
             // 
-            this.btnModifier.Location = new System.Drawing.Point(437, 188);
-            this.btnModifier.Name = "btnModifier";
-            this.btnModifier.Size = new System.Drawing.Size(151, 47);
-            this.btnModifier.TabIndex = 8;
-            this.btnModifier.Text = "Modifier";
-            this.btnModifier.UseVisualStyleBackColor = true;
-            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
+            this.btnAnnuler.Location = new System.Drawing.Point(437, 310);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(150, 47);
+            this.btnAnnuler.TabIndex = 6;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // codeProduitDataGridViewTextBoxColumn
+            // label3
             // 
-            this.codeProduitDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.codeProduitDataGridViewTextBoxColumn.DataPropertyName = "codeProduit";
-            this.codeProduitDataGridViewTextBoxColumn.HeaderText = "codeProduit";
-            this.codeProduitDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.codeProduitDataGridViewTextBoxColumn.Name = "codeProduitDataGridViewTextBoxColumn";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(51, 209);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Code";
             // 
-            // libelleDataGridViewTextBoxColumn
+            // label2
             // 
-            this.libelleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.libelleDataGridViewTextBoxColumn.DataPropertyName = "libelle";
-            this.libelleDataGridViewTextBoxColumn.HeaderText = "libelle";
-            this.libelleDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.libelleDataGridViewTextBoxColumn.Name = "libelleDataGridViewTextBoxColumn";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(51, 337);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Taux Max";
             // 
-            // tauxMaxDataGridViewTextBoxColumn
+            // label1
             // 
-            this.tauxMaxDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tauxMaxDataGridViewTextBoxColumn.DataPropertyName = "tauxMax";
-            this.tauxMaxDataGridViewTextBoxColumn.HeaderText = "tauxMax";
-            this.tauxMaxDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.tauxMaxDataGridViewTextBoxColumn.Name = "tauxMaxDataGridViewTextBoxColumn";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(51, 275);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Libelle";
             // 
-            // bindingSourceProduits
+            // textBoxTaux
             // 
-            this.bindingSourceProduits.DataSource = typeof(Triathlon.PRODUIT);
+            this.textBoxTaux.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceProduits, "tauxMax", true));
+            this.textBoxTaux.Location = new System.Drawing.Point(136, 331);
+            this.textBoxTaux.Name = "textBoxTaux";
+            this.textBoxTaux.Size = new System.Drawing.Size(250, 26);
+            this.textBoxTaux.TabIndex = 2;
+            // 
+            // textBoxLib
+            // 
+            this.textBoxLib.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceProduits, "libelle", true));
+            this.textBoxLib.Location = new System.Drawing.Point(136, 269);
+            this.textBoxLib.Name = "textBoxLib";
+            this.textBoxLib.Size = new System.Drawing.Size(250, 26);
+            this.textBoxLib.TabIndex = 1;
+            // 
+            // textBoxCode
+            // 
+            this.textBoxCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSourceProduits, "codeProduit", true));
+            this.textBoxCode.Location = new System.Drawing.Point(136, 209);
+            this.textBoxCode.Name = "textBoxCode";
+            this.textBoxCode.ReadOnly = true;
+            this.textBoxCode.Size = new System.Drawing.Size(250, 26);
+            this.textBoxCode.TabIndex = 0;
             // 
             // Produits
             // 
@@ -254,11 +262,11 @@
             this.Text = "Produits";
             this.Load += new System.EventHandler(this.Produits_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduits)).EndInit();
             this.tabControlProduits.ResumeLayout(false);
             this.tabPageProduits.ResumeLayout(false);
             this.tabPageDetails.ResumeLayout(false);
             this.tabPageDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProduits)).EndInit();
             this.ResumeLayout(false);
 
         }
