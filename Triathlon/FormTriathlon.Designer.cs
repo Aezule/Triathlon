@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControlTriathlon = new System.Windows.Forms.TabControl();
             this.tabPageAffTriathlon = new System.Windows.Forms.TabPage();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridTriathlon = new System.Windows.Forms.DataGridView();
             this.numTriathlonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lieuDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +42,9 @@
             this.tYPETRIATHLONDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TriathlonBinding = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageDetails = new System.Windows.Forms.TabPage();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
+            this.TypeBinding = new System.Windows.Forms.BindingSource(this.components);
+            this.lblType = new System.Windows.Forms.Label();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtLieu = new System.Windows.Forms.TextBox();
             this.txtNomTri = new System.Windows.Forms.TextBox();
@@ -57,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTriathlon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TriathlonBinding)).BeginInit();
             this.tabPageDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TypeBinding)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlTriathlon
@@ -72,6 +77,7 @@
             // 
             // tabPageAffTriathlon
             // 
+            this.tabPageAffTriathlon.Controls.Add(this.btnAdd);
             this.tabPageAffTriathlon.Controls.Add(this.dataGridTriathlon);
             this.tabPageAffTriathlon.Location = new System.Drawing.Point(4, 25);
             this.tabPageAffTriathlon.Name = "tabPageAffTriathlon";
@@ -80,6 +86,16 @@
             this.tabPageAffTriathlon.TabIndex = 0;
             this.tabPageAffTriathlon.Text = "Affichage Triathlon";
             this.tabPageAffTriathlon.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(259, 343);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(260, 48);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Ajouter";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dataGridTriathlon
             // 
@@ -103,7 +119,7 @@
             this.dataGridTriathlon.RowHeadersWidth = 51;
             this.dataGridTriathlon.RowTemplate.Height = 24;
             this.dataGridTriathlon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridTriathlon.Size = new System.Drawing.Size(756, 385);
+            this.dataGridTriathlon.Size = new System.Drawing.Size(756, 330);
             this.dataGridTriathlon.TabIndex = 1;
             this.dataGridTriathlon.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridTriathlon_CellMouseClick);
             // 
@@ -176,6 +192,8 @@
             // 
             // tabPageDetails
             // 
+            this.tabPageDetails.Controls.Add(this.comboBoxType);
+            this.tabPageDetails.Controls.Add(this.lblType);
             this.tabPageDetails.Controls.Add(this.txtDate);
             this.tabPageDetails.Controls.Add(this.txtLieu);
             this.tabPageDetails.Controls.Add(this.txtNomTri);
@@ -194,6 +212,31 @@
             this.tabPageDetails.TabIndex = 1;
             this.tabPageDetails.Text = "Détails";
             this.tabPageDetails.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.TriathlonBinding, "TYPE_TRIATHLON", true));
+            this.comboBoxType.DataSource = this.TypeBinding;
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Location = new System.Drawing.Point(246, 223);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(199, 24);
+            this.comboBoxType.TabIndex = 12;
+            // 
+            // TypeBinding
+            // 
+            this.TypeBinding.AllowNew = true;
+            this.TypeBinding.DataSource = typeof(Triathlon.TYPE_TRIATHLON);
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(127, 226);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(113, 16);
+            this.lblType.TabIndex = 11;
+            this.lblType.Text = "Type de triathlon :";
             // 
             // txtDate
             // 
@@ -314,6 +357,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TriathlonBinding)).EndInit();
             this.tabPageDetails.ResumeLayout(false);
             this.tabPageDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TypeBinding)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -343,5 +387,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn iNSCRIPTIONsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tYPETRIATHLONDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource TriathlonBinding;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.ComboBox comboBoxType;
+        private System.Windows.Forms.BindingSource TypeBinding;
     }
 }
