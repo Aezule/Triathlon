@@ -63,6 +63,7 @@
     <Compile Include="AGE.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
+    <Compile Include="Produit_Suite.cs" />
     <Compile Include="FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>

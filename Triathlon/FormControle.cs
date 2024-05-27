@@ -35,7 +35,7 @@ namespace Triathlon
                 List<INSCRIPTION> listeInscriptions = (from unI in context.INSCRIPTIONs
                                                        select unI).ToList();
 
-
+                ProduitBinding.DataSource = context.PRODUITs.Local.ToBindingList();
                 comboTriathlete.DataSource = listeInscriptions;
                 comboTriathlete.DisplayMember = "numDossard";
                 comboTriathlete.ValueMember = "numDossard";
