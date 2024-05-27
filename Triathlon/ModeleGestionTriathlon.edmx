@@ -354,7 +354,7 @@
             <End Role="TRIATHLON" EntitySet="TRIATHLONs" />
           </AssociationSet>
           <FunctionImport Name="GetClassement" ReturnType="Collection(triathlonDB_EntityModel.GetClassement_Result)">
-            <Parameter Name="CodeTri" Mode="In" Type="String" />
+          <Parameter Name="CodeTri" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="TRIATHLON">
