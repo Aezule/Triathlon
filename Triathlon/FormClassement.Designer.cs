@@ -28,14 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridClassement = new System.Windows.Forms.DataGridView();
             this.comboBoxTriathlon = new System.Windows.Forms.ComboBox();
+            this.TriathlonBinding = new System.Windows.Forms.BindingSource(this.components);
             this.lblCombo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClassement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TriathlonBinding)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridClassement
             // 
+            this.dataGridClassement.AllowUserToAddRows = false;
+            this.dataGridClassement.AllowUserToDeleteRows = false;
             this.dataGridClassement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridClassement.Location = new System.Drawing.Point(12, 91);
             this.dataGridClassement.Name = "dataGridClassement";
@@ -46,11 +51,18 @@
             // 
             // comboBoxTriathlon
             // 
+            this.comboBoxTriathlon.DataSource = this.TriathlonBinding;
+            this.comboBoxTriathlon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTriathlon.FormattingEnabled = true;
             this.comboBoxTriathlon.Location = new System.Drawing.Point(12, 49);
             this.comboBoxTriathlon.Name = "comboBoxTriathlon";
             this.comboBoxTriathlon.Size = new System.Drawing.Size(298, 24);
             this.comboBoxTriathlon.TabIndex = 1;
+            // 
+            // TriathlonBinding
+            // 
+            this.TriathlonBinding.DataSource = typeof(Triathlon.INSCRIPTION);
+            this.TriathlonBinding.CurrentChanged += new System.EventHandler(this.TriathlonBinding_CurrentChanged);
             // 
             // lblCombo
             // 
@@ -71,7 +83,9 @@
             this.Controls.Add(this.dataGridClassement);
             this.Name = "FormClassement";
             this.Text = "Affichage du Classement";
+            this.Load += new System.EventHandler(this.FormClassement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridClassement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TriathlonBinding)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,5 +96,6 @@
         private System.Windows.Forms.DataGridView dataGridClassement;
         private System.Windows.Forms.ComboBox comboBoxTriathlon;
         private System.Windows.Forms.Label lblCombo;
+        private System.Windows.Forms.BindingSource TriathlonBinding;
     }
 }

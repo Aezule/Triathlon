@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.tabControlInscription = new System.Windows.Forms.TabControl();
             this.tabPageAjoutInsc = new System.Windows.Forms.TabPage();
+            this.textTriathlete = new System.Windows.Forms.TextBox();
+            this.txtTriathlon = new System.Windows.Forms.TextBox();
             this.btnAjouterInscription = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
             this.dtPickerDate = new System.Windows.Forms.DateTimePicker();
@@ -51,8 +53,6 @@
             this.comboBoxTriathlon = new System.Windows.Forms.ComboBox();
             this.bindingSourceTriathlons = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSourceInscriptionAll = new System.Windows.Forms.BindingSource(this.components);
-            this.txtTriathlon = new System.Windows.Forms.TextBox();
-            this.textTriathlete = new System.Windows.Forms.TextBox();
             this.tabControlInscription.SuspendLayout();
             this.tabPageAjoutInsc.SuspendLayout();
             this.tabPageSuppInsc.SuspendLayout();
@@ -66,11 +66,10 @@
             // 
             this.tabControlInscription.Controls.Add(this.tabPageAjoutInsc);
             this.tabControlInscription.Controls.Add(this.tabPageSuppInsc);
-            this.tabControlInscription.Location = new System.Drawing.Point(15, 16);
-            this.tabControlInscription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabControlInscription.Location = new System.Drawing.Point(13, 13);
             this.tabControlInscription.Name = "tabControlInscription";
             this.tabControlInscription.SelectedIndex = 0;
-            this.tabControlInscription.Size = new System.Drawing.Size(872, 531);
+            this.tabControlInscription.Size = new System.Drawing.Size(775, 425);
             this.tabControlInscription.TabIndex = 0;
             // 
             // tabPageAjoutInsc
@@ -82,22 +81,36 @@
             this.tabPageAjoutInsc.Controls.Add(this.dtPickerDate);
             this.tabPageAjoutInsc.Controls.Add(this.lbltriathlète);
             this.tabPageAjoutInsc.Controls.Add(this.lblTriathlon);
-            this.tabPageAjoutInsc.Location = new System.Drawing.Point(4, 29);
-            this.tabPageAjoutInsc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPageAjoutInsc.Location = new System.Drawing.Point(4, 25);
             this.tabPageAjoutInsc.Name = "tabPageAjoutInsc";
-            this.tabPageAjoutInsc.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPageAjoutInsc.Size = new System.Drawing.Size(864, 498);
+            this.tabPageAjoutInsc.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageAjoutInsc.Size = new System.Drawing.Size(767, 396);
             this.tabPageAjoutInsc.TabIndex = 0;
             this.tabPageAjoutInsc.Text = "Ajouter une Inscription";
             this.tabPageAjoutInsc.UseVisualStyleBackColor = true;
             // 
+            // textTriathlete
+            // 
+            this.textTriathlete.Location = new System.Drawing.Point(215, 84);
+            this.textTriathlete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textTriathlete.Name = "textTriathlete";
+            this.textTriathlete.Size = new System.Drawing.Size(152, 22);
+            this.textTriathlete.TabIndex = 8;
+            // 
+            // txtTriathlon
+            // 
+            this.txtTriathlon.Location = new System.Drawing.Point(215, 35);
+            this.txtTriathlon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTriathlon.Name = "txtTriathlon";
+            this.txtTriathlon.Size = new System.Drawing.Size(152, 22);
+            this.txtTriathlon.TabIndex = 7;
+            // 
             // btnAjouterInscription
             // 
             this.btnAjouterInscription.BackColor = System.Drawing.Color.YellowGreen;
-            this.btnAjouterInscription.Location = new System.Drawing.Point(289, 358);
-            this.btnAjouterInscription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAjouterInscription.Location = new System.Drawing.Point(257, 286);
             this.btnAjouterInscription.Name = "btnAjouterInscription";
-            this.btnAjouterInscription.Size = new System.Drawing.Size(304, 71);
+            this.btnAjouterInscription.Size = new System.Drawing.Size(270, 57);
             this.btnAjouterInscription.TabIndex = 6;
             this.btnAjouterInscription.Text = "Ajouter ";
             this.btnAjouterInscription.UseVisualStyleBackColor = false;
@@ -106,36 +119,35 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(69, 199);
+            this.lblDate.Location = new System.Drawing.Point(61, 159);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(139, 20);
+            this.lblDate.Size = new System.Drawing.Size(116, 16);
             this.lblDate.TabIndex = 5;
             this.lblDate.Text = "Date d\'inscription :";
             // 
             // dtPickerDate
             // 
-            this.dtPickerDate.Location = new System.Drawing.Point(225, 192);
-            this.dtPickerDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtPickerDate.Location = new System.Drawing.Point(200, 154);
             this.dtPickerDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtPickerDate.Name = "dtPickerDate";
-            this.dtPickerDate.Size = new System.Drawing.Size(224, 26);
+            this.dtPickerDate.Size = new System.Drawing.Size(200, 22);
             this.dtPickerDate.TabIndex = 2;
             // 
             // lbltriathlète
             // 
             this.lbltriathlète.AutoSize = true;
-            this.lbltriathlète.Location = new System.Drawing.Point(69, 105);
+            this.lbltriathlète.Location = new System.Drawing.Point(61, 84);
             this.lbltriathlète.Name = "lbltriathlète";
-            this.lbltriathlète.Size = new System.Drawing.Size(161, 20);
+            this.lbltriathlète.Size = new System.Drawing.Size(132, 16);
             this.lbltriathlète.TabIndex = 1;
             this.lbltriathlète.Text = "Numéro du triathlète :";
             // 
             // lblTriathlon
             // 
             this.lblTriathlon.AutoSize = true;
-            this.lblTriathlon.Location = new System.Drawing.Point(69, 44);
+            this.lblTriathlon.Location = new System.Drawing.Point(61, 35);
             this.lblTriathlon.Name = "lblTriathlon";
-            this.lblTriathlon.Size = new System.Drawing.Size(156, 20);
+            this.lblTriathlon.Size = new System.Drawing.Size(128, 16);
             this.lblTriathlon.TabIndex = 0;
             this.lblTriathlon.Text = "Numéro du triathlon :";
             // 
@@ -146,20 +158,19 @@
             this.tabPageSuppInsc.Controls.Add(this.dataGridView1);
             this.tabPageSuppInsc.Controls.Add(this.lblInscription);
             this.tabPageSuppInsc.Controls.Add(this.comboBoxTriathlon);
-            this.tabPageSuppInsc.Location = new System.Drawing.Point(4, 29);
-            this.tabPageSuppInsc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPageSuppInsc.Location = new System.Drawing.Point(4, 25);
             this.tabPageSuppInsc.Name = "tabPageSuppInsc";
-            this.tabPageSuppInsc.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPageSuppInsc.Size = new System.Drawing.Size(864, 498);
+            this.tabPageSuppInsc.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageSuppInsc.Size = new System.Drawing.Size(767, 396);
             this.tabPageSuppInsc.TabIndex = 1;
             this.tabPageSuppInsc.Text = "Supprimer une Inscription";
             this.tabPageSuppInsc.UseVisualStyleBackColor = true;
             // 
             // labelNoInscription
             // 
-            this.labelNoInscription.Location = new System.Drawing.Point(268, 245);
+            this.labelNoInscription.Location = new System.Drawing.Point(238, 196);
             this.labelNoInscription.Name = "labelNoInscription";
-            this.labelNoInscription.Size = new System.Drawing.Size(330, 73);
+            this.labelNoInscription.Size = new System.Drawing.Size(293, 58);
             this.labelNoInscription.TabIndex = 4;
             this.labelNoInscription.Text = "Pas d\'inscriptions pour ce triathlon";
             this.labelNoInscription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,10 +178,9 @@
             // btnSupprimerInscription
             // 
             this.btnSupprimerInscription.BackColor = System.Drawing.Color.IndianRed;
-            this.btnSupprimerInscription.Location = new System.Drawing.Point(54, 432);
-            this.btnSupprimerInscription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSupprimerInscription.Location = new System.Drawing.Point(48, 346);
             this.btnSupprimerInscription.Name = "btnSupprimerInscription";
-            this.btnSupprimerInscription.Size = new System.Drawing.Size(762, 55);
+            this.btnSupprimerInscription.Size = new System.Drawing.Size(677, 44);
             this.btnSupprimerInscription.TabIndex = 3;
             this.btnSupprimerInscription.Text = "Supprimer";
             this.btnSupprimerInscription.UseVisualStyleBackColor = false;
@@ -178,6 +188,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -189,12 +201,11 @@
             this.tempsNatationDataGridViewTextBoxColumn,
             this.numeroTriathleteDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.bindingSourceInscriptionsDunTriathlon;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 81);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 65);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(848, 344);
+            this.dataGridView1.Size = new System.Drawing.Size(754, 275);
             this.dataGridView1.TabIndex = 2;
             // 
             // numDossardDataGridViewTextBoxColumn
@@ -246,9 +257,9 @@
             // lblInscription
             // 
             this.lblInscription.AutoSize = true;
-            this.lblInscription.Location = new System.Drawing.Point(51, 5);
+            this.lblInscription.Location = new System.Drawing.Point(45, 4);
             this.lblInscription.Name = "lblInscription";
-            this.lblInscription.Size = new System.Drawing.Size(189, 20);
+            this.lblInscription.Size = new System.Drawing.Size(154, 16);
             this.lblInscription.TabIndex = 1;
             this.lblInscription.Text = "Séléctionner un triathlon :";
             // 
@@ -256,10 +267,9 @@
             // 
             this.comboBoxTriathlon.DataSource = this.bindingSourceTriathlons;
             this.comboBoxTriathlon.FormattingEnabled = true;
-            this.comboBoxTriathlon.Location = new System.Drawing.Point(54, 40);
-            this.comboBoxTriathlon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxTriathlon.Location = new System.Drawing.Point(48, 32);
             this.comboBoxTriathlon.Name = "comboBoxTriathlon";
-            this.comboBoxTriathlon.Size = new System.Drawing.Size(334, 28);
+            this.comboBoxTriathlon.Size = new System.Drawing.Size(297, 24);
             this.comboBoxTriathlon.TabIndex = 0;
             // 
             // bindingSourceTriathlons
@@ -271,27 +281,12 @@
             // 
             this.bindingSourceInscriptionAll.DataSource = typeof(Triathlon.INSCRIPTION);
             // 
-            // txtTriathlon
-            // 
-            this.txtTriathlon.Location = new System.Drawing.Point(242, 44);
-            this.txtTriathlon.Name = "txtTriathlon";
-            this.txtTriathlon.Size = new System.Drawing.Size(171, 26);
-            this.txtTriathlon.TabIndex = 7;
-            // 
-            // textTriathlete
-            // 
-            this.textTriathlete.Location = new System.Drawing.Point(242, 105);
-            this.textTriathlete.Name = "textTriathlete";
-            this.textTriathlete.Size = new System.Drawing.Size(171, 26);
-            this.textTriathlete.TabIndex = 8;
-            // 
             // FormInscription
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 562);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControlInscription);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormInscription";
             this.Text = "Inscription des Triathlètes";
             this.Load += new System.EventHandler(this.FormInscription_Load);

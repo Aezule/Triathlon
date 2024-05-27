@@ -10,7 +10,7 @@ namespace Triathlon
     {
         public override string ToString()
         {
-            return this.numDossard + this.numeroTriathlete;
+            return this.numDossard + " - " + this.numeroTriathlete;
         }
     }
 }

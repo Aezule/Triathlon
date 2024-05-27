@@ -25,11 +25,9 @@ namespace Triathlon
         {
             try
             {
-
                 context = new TriathlonEntities();
                 context.TRIATHLONs.Load();
                 TriathlonBinding.DataSource = context.TRIATHLONs.Local.ToBindingList();
-    
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
