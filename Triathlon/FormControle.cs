@@ -31,7 +31,7 @@ namespace Triathlon
                 VerifBinding.DataSource = context.VERIFIERs.Local.ToBindingList();
                 
                 context.INSCRIPTIONs.Load();
-
+                context.PRODUITs.Load();
                 List<INSCRIPTION> listeInscriptions = (from unI in context.INSCRIPTIONs
                                                        select unI).ToList();
 
@@ -78,7 +78,7 @@ namespace Triathlon
                     context.Entry(unCT).State = EntityState.Unchanged;
                     
 
-                    MessageBox.Show("Echec de l'insertion !", "Attention", MessageBoxButtons.OK);
+                    MessageBox.Show("Echec de l'insertion !" + er.Message, "Attention", MessageBoxButtons.OK);
                 }
                 tabControleDopage_SelectedIndexChanged(sender, e);
                 
@@ -146,10 +146,7 @@ namespace Triathlon
                 {
                     numDossartTxt = comboTriathlete.SelectedValue.ToString();
                 }
-                
-                //TRIATHLON Triathlon = context.INSCRIPTIONs
-                //                        .Where(i => i.numDossard == numDossard)
-                //                        .Select(i => new { i.numTriathlon });
+             
 
 
                 List<INSCRIPTION> lesInscription = (from unI in context.INSCRIPTIONs
@@ -176,8 +173,8 @@ namespace Triathlon
                 
 
                 comboTriathlon.DataSource = lesTriathlons;
-                //comboTriathlon.DisplayMember = "numTriathlon";
-                //comboTriathlon.ValueMember = "numTriathlon";
+                comboTriathlon.DisplayMember = "numTriathlon";
+                comboTriathlon.ValueMember = "numTriathlon";
 
             }catch(Exception ex)
             {
