@@ -124,6 +124,12 @@
     <Compile Include="PRODUIT.cs">
       <DependentUpon>ModeleGestionTriathlon.tt</DependentUpon>
     </Compile>
+    <Compile Include="Produits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produits.Designer.cs">
+      <DependentUpon>Produits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TRIATHLETE.cs">
@@ -160,6 +166,9 @@
     <EmbeddedResource Include="FormTriathlon.resx">
       <DependentUpon>FormTriathlon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produits.resx">
+      <DependentUpon>Produits.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -178,8 +187,10 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\INSCRIPTION.datasource" />
+    <None Include="Properties\DataSources\PRODUIT.datasource" />
     <None Include="Properties\DataSources\TRIATHLETE.datasource" />
     <None Include="Properties\DataSources\TRIATHLON.datasource" />
+    <None Include="Properties\DataSources\TYPE_TRIATHLON.datasource" />
     <None Include="Properties\DataSources\VERIFIER.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
